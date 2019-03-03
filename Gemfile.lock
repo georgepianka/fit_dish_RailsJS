@@ -48,7 +48,7 @@ GEM
     bcrypt (3.1.12)
     bootsnap (1.4.1)
       msgpack (~> 1.0)
-    bootstrap (4.2.1)
+    bootstrap (4.3.1)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
@@ -219,7 +219,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
-  bootstrap (~> 4.2.1)
+  bootstrap (>= 4.3.1)
   byebug
   coffee-rails (~> 4.2)
   dotenv-rails
