@@ -1,33 +1,118 @@
-body {
-  padding-top: 70px;
-  padding-bottom: 30px;
-}
+body, html {
+   height: 100%;
+   font-family: 'Source Sans Pro', sans-serif !important;
+   font-weight: bold !important;
+ }
 
-.theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
-}
+ /* background and hr */
 
-.theme-showcase > p > .btn {
-  margin: 5px 0;
-}
+ .bg {
+   background-image: linear-gradient(black, transparent), url(/images/puppy.jpg);
+   height: 100%;
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   overflow: scroll;
+ }
 
-.center {
-  text-align: center;
-}
+ hr.fade {
+   border: 0;
+   height: 3px;
+   background: #333;
+   background-image: linear-gradient(#ccc, #333, #000);
+ }
 
-.pic,
-.info {
-  padding: 20px;
-  display: inline-block;
-  background-color: #eeeeee;
-  border-radius: 7px;
-  vertical-align: middle;
-  margin: 10px;
-}
+ /* lists */
 
-.info {
-  height: 290px;
-  text-align: left;
-}
+ ul li a, ol li a {
+   color: rgb(253,193,57) !important;
+ }
+
+ ol {
+   padding-left: 0 !important;
+   list-style-position: inside !important;
+ }
+
+ ul {
+   list-style-type: none !important;
+   padding-left: 0 !important;
+ }
+
+ /* links */
+
+ .nav-link {
+   color: rgb(41,162,182) !important;
+ }
+
+ .red-link {
+   color: rgb(216,54,72) !important;
+ }
+
+ #white-fb {
+   color: white !important;
+ }
+
+ .yellow-link {
+   color: rgb(253,193,57) !important;
+   font-weight: bold;
+ }
+
+ /* errors */
+
+ .field_with_errors {
+   color: rgb(216,54,72);
+ }
+
+ .error_message {
+   color: rgb(216,54,72);
+ }
+
+ /* img */
+
+ .dog-img {
+   height: 100%;
+   width: 100%;
+   position: relative;
+   overflow: hidden;
+   background-color: #222;
+   object-fit: cover;
+ }
+
+ /* text */
+
+ .overlay {
+   position: absolute;
+   left: 15px;
+   right: 15px;
+   object-fit: cover;
+   top: 0;
+   bottom: 0;
+   background-image: linear-gradient(to top, rgba(1, 1, 1, 1), rgba(1, 1, 1, 0.5), transparent);
+ }
+
+ .yellow-text {
+   color: rgb(253,193,57) !important;
+   font-weight: bold;
+ }
+
+ .red-text {
+   color: rgb(216,54,72);
+ }
+
+ .invert {
+   filter: invert(50%);
+ }
+
+ .indent-10 {
+   margin-left: 10px;
+ }
+
+ .indent-57 {
+   margin-left: 57px;
+ }
+
+ .bottom-text {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+ }
