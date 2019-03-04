@@ -21,7 +21,17 @@ module FitDish
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+
+    # for Facebook required https
     #config.force_ssl = true
+
+    #Site URL
+    #https://localhost:3000/
+
+    #Valid OAuth Redirect URIs
+    # https://0.0.0.0:3000/auth/facebook/callback
+
+    # bundle exec thin start --ssl
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -31,6 +41,6 @@ module FitDish
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
+    #config.api_only = true
   end
 end

@@ -7,7 +7,7 @@ body, html {
  /* background and hr */
 
  .bg {
-   background-image: linear-gradient(black, transparent), url(/images/puppy.jpg);
+   background-image: linear-gradient(black, transparent), url(fit_sesh_jumbotron.jpg);
    height: 100%;
    background-position: center;
    background-size: cover;
@@ -116,3 +116,22 @@ body, html {
    bottom: 0;
    width: 100%;
  }
+
+ .center {
+    text-align: center;
+  }
+
+  .pic,
+  .info {
+    padding: 20px;
+    display: inline-block;
+    background-color: #eeeeee;
+    border-radius: 7px;
+    vertical-align: middle;
+    margin: 10px;
+  }
+
+  .info {
+    height: 290px;
+    text-align: left;
+  }
