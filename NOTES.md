@@ -40,3 +40,7 @@ We can then use this title node to build a query using the matches method, which
 This may not seem like such a big win, since anyway you could have written the query in raw SQL with less lines of code. But what if you wanted to re-use that snippet in combination with another condition?
 
 You could certainly do this with a new inline SQL, but a more scalable way is to use Arel. For example:
+
+
+
+FLASH: [:danger], [:info], [:success]

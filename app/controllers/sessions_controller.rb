@@ -1,24 +1,27 @@
 class SessionsController < ApplicationController
 
   def new
-    raise params.inspect
   end
 
   def create
     if auth_hash = request.env["omniauth.auth"]
-      @user = User.find_or_create_by_omniauth(auth_hash)
+      @user = User.find_or_create_from_facebook(auth_hash)
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-     @user = User.find_by(username: params[:username])
+      authenticate_user
+    end
+  end
+
+  def authenticate_user
+    @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        redirect_to login_path
-        flash[:notice] = "Error: Please Login"
+        flash.now[:danger] = "Login Error: Try Again!"
+        render :new
       end
-    end
   end
 
   def destroy

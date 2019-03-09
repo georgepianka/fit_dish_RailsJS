@@ -1,9 +1,12 @@
-<div class="info">
-  <div class="welcome">
-    <h1>Welcome!</h1>
-  </div>
-  <h5>Please Login: </h5>
-    <%=# render partial: 'form' %><br>
+<div class="text-center">
+<h1 class="display-4 font-weight-bold">Welcome to Fit Dish!</h1>
 
-  <h5>Don't have an account yet? Click <%= link_to "here.", new_user_path %></h5>
+    <%= render partial: 'form' %><br>
+
+
+<p><h5>Don't have an account yet?</h5></p>
+
+<p><a class="btn btn-success btn-lg " href="<%= login_path %>" role="button">Sign Up</a></p>
+<h5> or </h5>
+<p><h4><%= link_to('<span class="white-link">Log in with Facebook </span><i class="fab fa-facebook-square"></i>'.html_safe, '/auth/facebook') %></h4></p>
 </div>

@@ -13,13 +13,11 @@
 
       <%= render '/layouts/navbar' if logged_in? %>
 
-      <div class="info">
         <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
+          <div class="center alert alert-<%= key %>"><%= value %></div>
         <% end %>
-      </div>
 
-      <div class="container text-left text-light align-middle form-group">
+      <div class="container text-left text-light align-middle">
 
           <%= yield %>
 

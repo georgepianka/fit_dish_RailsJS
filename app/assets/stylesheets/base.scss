@@ -1,13 +1,11 @@
 body, html {
    height: 100%;
-   font-family: 'Source Sans Pro', sans-serif !important;
-   font-weight: bold !important;
+   font-family: 'Source Sans Pro', sans-serif;
+   font-weight: bold;
  }
 
- /* background and hr */
-
  .bg {
-   background-image: linear-gradient(black, transparent), url(fit_sesh_jumbotron.jpg);
+   background-image: linear-gradient(black, transparent), url(healthydiet.jpg);
    height: 100%;
    background-position: center;
    background-size: cover;
@@ -15,45 +13,38 @@ body, html {
    overflow: scroll;
  }
 
- hr.fade {
-   border: 0;
-   height: 3px;
-   background: #333;
-   background-image: linear-gradient(#ccc, #333, #000);
- }
-
  /* lists */
 
  ul li a, ol li a {
-   color: rgb(253,193,57) !important;
+   color: rgb(253,193,57);
  }
 
  ol {
-   padding-left: 0 !important;
-   list-style-position: inside !important;
+   padding-left: 0;
+   list-style-position: inside;
  }
 
  ul {
-   list-style-type: none !important;
-   padding-left: 0 !important;
+   list-style-type: none;
+   padding-left: 0 ;
  }
 
  /* links */
 
  .nav-link {
-   color: rgb(41,162,182) !important;
+   color: rgb(41,162,182);
  }
 
  .red-link {
-   color: rgb(216,54,72) !important;
+   color: rgb(216,54,72);
  }
 
- #white-fb {
-   color: white !important;
+ .white-link {
+   color: white ;
  }
 
  .yellow-link {
-   color: rgb(253,193,57) !important;
+   color: rgb(253,193,57);
    font-weight: bold;
  }
 
@@ -91,7 +82,7 @@ body, html {
  }
 
  .yellow-text {
-   color: rgb(253,193,57) !important;
+   color: rgb(253,193,57) ;
    font-weight: bold;
  }
 
@@ -125,13 +116,8 @@ body, html {
   .info {
     padding: 20px;
     display: inline-block;
-    background-color: #eeeeee;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 7px;
     vertical-align: middle;
     margin: 10px;
-  }
-
-  .info {
-    height: 290px;
-    text-align: left;
   }
