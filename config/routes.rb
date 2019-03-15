@@ -8,15 +8,13 @@ Rails.application.routes.draw do
 
 
   resources :users, only: %i[new create show] do
-    resources :recipes, :meals
+    resources :recipes, :meals, :ingredients
   end
 
   resources :recipes, only: %i[show index] do
-    resources :ingredients, only: %i[new create]
+    resources :ingredients, only: %i[index new create]
+    resources :substitutions, only: %i[new create]
   end
-
-
-
 
   post '/like' => 'likes#like'
   delete '/unlike' => 'likes#unlike'
