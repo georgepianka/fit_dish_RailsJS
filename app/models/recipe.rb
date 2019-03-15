@@ -1,7 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :recipiable, polymorphic: true
-  has_many :items
-  has_many :recommended_substitutions
-  validates :items, presence: true
-  validates :
+  has_many :ingredients
+  has_many :substitutions
+  validates :ingredients, presence: true
 end
