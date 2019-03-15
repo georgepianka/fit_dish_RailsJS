@@ -20,8 +20,9 @@
       <li class="nav-item">
         <a class="nav-link" href="<%= user_path(current_user) %>">Preferences</a>
       </li>
+
     </ul>
   </div>
-  <%= logout_button.html_safe %>
+  <div><a id="Log Out" class="btn btn-warning btn-sm" <%= link_to "Log Out", logout_path, method: :post %></a></div>
 </nav>
 <br>
