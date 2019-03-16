@@ -1,6 +1,13 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :recipes
+  has_many :dishes, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :substitutions
+  has_many :grocery_lists, through: :dishes, source: :recipe
+  has_many :favorite_recipes, through: :likes, source: :recipe
+
   validates :username, presence: true
   validates :password, length: {minimum: 6}, allow_nil: true #loses the cached value for password on reload from database
   validates :email, presence: true
