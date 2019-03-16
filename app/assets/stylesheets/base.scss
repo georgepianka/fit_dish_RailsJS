@@ -21,6 +21,14 @@ body, html {
     filter: drop-shadow(2px 2px 2px green);
 }
 
+hr.style {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
  /* lists */
 
  ul li a, ol li a {
