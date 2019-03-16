@@ -1,12 +1,17 @@
 <div class="center">
-<h1 class="display-3 text-success my-3 font-weight-bold">Welcome to Fit Dish!</h1>
+    <h1 class="display-5 text-success my-3 font-weight-bold">Welcome to Fit Dish!</h1>
 
-    <%= render partial: 'form' %><br>
+        <%= render partial: 'form' %><br>
 
+        <hr class="style">
 
-<p><h5>Don't have an account yet?</h5></p>
+        <div class="d-inline-block">
+            <div class="info align-top">
+              <h5>Don't have an account yet?</h5>
+              <a class="btn btn-success btn-md" href="<%= new_user_path %>" role="button">Sign Up</a>
+            </div>
 
-<p><a class="btn btn-success btn-lg " href="<%= new_user_path %>" role="button">Sign Up</a></p>
-<h5> or </h5>
-<p><h4><%= link_to('<span class="white-link">Log in with Facebook </span><i class="fab fa-facebook-square"></i>'.html_safe, '/auth/facebook') %></h4></p>
+           <h4 class="info align-top"><%= link_to('<div class="white-link">Log in with Facebook </div><i class="fab fa-facebook-square" style="font-size:36px; margin-top: 5px;"></i>'.html_safe, '/auth/facebook') %></h4>
+        </div>
+
 </div>

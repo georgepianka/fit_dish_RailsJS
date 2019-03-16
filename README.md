@@ -1,5 +1,11 @@
 # fit_dish
 
+Run rails s and go to http://localhost:3000/ to begin.
+
+thin start --ssl
+
+Facebook automatically allows http://localhost REDIRECTS in Development Mode
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

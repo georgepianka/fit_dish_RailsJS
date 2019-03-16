@@ -22,14 +22,23 @@ module FitDish
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    # for Facebook required https
+    # Facebook required HTTPS
     #config.force_ssl = true
 
+    # Facebook automatically allows http://localhost REDIRECTS in Development Mode
+
+    # With HTTP, Site URL must be localhost:3000, not 0.0.0.0:3000
+    # http://localhost:3000/
+
+
+    #FACEBOOK LOGIN SETTINGS:
+    
     #Site URL
     #https://localhost:3000/
 
     #Valid OAuth Redirect URIs
     # https://0.0.0.0:3000/auth/facebook/callback
+    # https://localhost:3000/auth/facebook/callback
 
     # bundle exec thin start --ssl
 

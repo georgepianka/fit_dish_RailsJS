@@ -1,13 +1,16 @@
 <div class="center">
 
-  <%= render partial: 'form' %> <br>
+      <%= render partial: 'form', locals: {user: @user} %> <br>
 
+      <hr class="style">
 
+      <div class="d-inline-block">
+          <div class="info align-top">
+            <h5>Already have an account?</h5>
+            <a class="btn btn-primary btn-md " href="<%= login_path %>" role="button">Log-In</a>
+          </div>
 
-  <p><h5>Already have an account?</h5></p>
-
-  <p><a class="btn btn-primary btn-lg " href="<%= login_path %>" role="button">Log-In</a></p>
-  <h5> or </h5>
-  <p><h4><%= link_to('<span class="white-link">Log in with Facebook </span><i class="fab fa-facebook-square"></i>'.html_safe, '/auth/facebook') %></h4></p>
+          <h4 class="info align-top"><%= link_to('<span class="white-link">Log in with Facebook </span><i class="fab fa-facebook-square"></i>'.html_safe, '/auth/facebook') %></h4>
+      </div>
 
 </div>

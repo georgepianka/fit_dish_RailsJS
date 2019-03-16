@@ -14,16 +14,14 @@ body, html {
  }
 
  #mainEmoji {
-    width: 110px;
-    height: 100px;
+    width: 80px;
+    height: 70px;
     opacity: 0.9;
     filter: alpha(opacity=50);
     filter: drop-shadow(2px 2px 2px green);
 }
 
 hr.style {
-    margin-top: 30px;
-    margin-bottom: 10px;
     height: 12px;
     border: 0;
     box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
@@ -55,9 +53,14 @@ hr.style {
    color: rgb(216,54,72);
  }
 
- .white-link {
-   color: white ;
+ .white-link, .white-link:visited  {
+   color: white;
  }
+
+ .white-link:hover, .white-link:active {
+   color: whitesmoke;
+   background-color: rgb(60,90,153);
+}
 
  .yellow-link {
    color: rgb(253,193,57);
