@@ -43,4 +43,4 @@ You could certainly do this with a new inline SQL, but a more scalable way is to
 
 
 
-FLASH: [:danger], [:info], [:success]
+FLASH: [:danger], [:info], [:primary]

@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+
+  def show
+    @user = User.find_by(id: params[:id])
+    flash.now[:danger] = "Error."
+  end
+
   def new
     @user = User.new
   end
@@ -20,9 +26,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find_by(id: params[:id])
-  end
+
 
   private
 

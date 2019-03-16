@@ -21,6 +21,17 @@ body, html {
     filter: drop-shadow(2px 2px 2px green);
 }
 
+.navbar-expand-lg .navbar-brand {
+    font-size: 30px;
+    margin-right: 50px;
+    color: #43709D;
+}
+
+.navbar-nav > li > a {
+    font-size: 20px;
+    margin-left: 15px;
+}
+
 hr.style {
     height: 12px;
     border: 0;
