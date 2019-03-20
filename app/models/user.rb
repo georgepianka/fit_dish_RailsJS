@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :dishes, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :substitutions
-  has_many :grocery_lists, through: :dishes, source: :recipe
+  has_many :recipe_lists, through: :dishes, source: :recipe
   has_many :favorite_recipes, through: :likes, source: :recipe
 
   validates :username, presence: true
