@@ -95,6 +95,16 @@ hr.style {
 
  /* text */
 
+
+
+.list-group-item {
+  box-sizing: border-box;
+  background: #e0ddd5;
+  color: #171e42;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
  .notes {
    background-color :#f5f5f5;
    display: inline-block;
@@ -129,15 +139,6 @@ hr.style {
    margin: 10px;
  }
 
- .overlay {
-   text-align: left;
-   padding: 20px;
-   display: inline-block;
-   border-radius: 7px;
-   vertical-align: middle;
-   margin: 10px;
-   background-image: linear-gradient(to top, rgba(1, 1, 1, 1), rgba(1, 1, 1, 0.5), transparent);
- }
 
  .yellow-text {
    color: rgb(253,193,57) ;

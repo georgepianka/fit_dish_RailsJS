@@ -1,0 +1,17 @@
+<div class="d-inline-block">
+
+  <h1 class="display-4 info">Ingredients</h1>
+
+  <%= link_to 'Add New Ingredient', new_ingredient_path, class: "btn btn-success btn-md border-muted ml-3" %>
+
+
+
+          <ul class="list-group">
+            <% @ingredients.each do |ingredient| %>
+                <li class="list-group-item">
+                <span class="align-middle"><%= ingredient.name %></span>
+                <%= link_to 'Delete', ingredient, class:"btn btn-sm btn-dark border border-muted float-right m-0", method: :delete, data: { confirm: 'Are you sure?' } %>
+                </li>
+            <% end %>
+          </ul>
+  </div>

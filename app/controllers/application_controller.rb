@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
       def authorized?
         if find_user_by_id != current_user
-          flash[:danger] = "You can only view your own profile page."
+          flash[:danger] = "You can only view your own profile page!"
           redirect_to user_path(current_user)
         end
       end

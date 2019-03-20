@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   def show
     find_user_by_id
-
   end
 
   def create
@@ -40,7 +39,6 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
 
   def index
   end
