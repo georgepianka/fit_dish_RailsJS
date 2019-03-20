@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :favorite_recipes, through: :likes, source: :recipe
 
   validates :username, presence: true
-  validates :password, length: {minimum: 6}, allow_nil: true #loses the cached value for password on reload from database
+  validates :password, presence: true, length: {minimum: 6}, allow_nil: true #loses the cached value for password on reload from database
   validates :email, presence: true
   validates :email, :uniqueness => {:case_sensitive => false}
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }

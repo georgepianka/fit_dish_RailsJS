@@ -84,20 +84,14 @@ hr.style {
    color: rgb(216,54,72);
  }
 
+ span.field_with_errors input[type] {
+   border: 2px solid red;
+}
+
  .error_message {
    color: rgb(216,54,72);
  }
 
- /* img */
-
- .dog-img {
-   height: 100%;
-   width: 100%;
-   position: relative;
-   overflow: hidden;
-   background-color: #222;
-   object-fit: cover;
- }
 
  /* text */
 
@@ -126,10 +120,6 @@ hr.style {
 
  .indent-10 {
    margin-left: 10px;
- }
-
- .indent-57 {
-   margin-left: 57px;
  }
 
  .bottom-text {
