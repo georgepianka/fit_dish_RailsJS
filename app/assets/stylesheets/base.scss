@@ -95,13 +95,47 @@ hr.style {
 
  /* text */
 
+ .notes {
+   background-color :#f5f5f5;
+   display: inline-block;
+ }
+
+ .list {
+  list-style: square inside;
+  color: #474a51;
+  padding: 0px;
+  border: 1px solid #dedede;
+}
+.list li {
+  border-bottom: 1px dotted #ccc;
+  height: auto;
+  padding: 5px 10px;
+  text-transform: capitalize;
+}
+.list li:hover {
+  background-color: rgba(0, 0, 0, .1);
+  -webkit-transition: all 0.2s;
+  -moz-transition:    all 0.2s;
+  -ms-transition:     all 0.2s;
+  -o-transition:      all 0.2s;
+}
+
+ .info {
+   padding: 20px;
+   display: inline-block;
+   background-color: rgba(0, 0, 0, 0.5);
+   border-radius: 7px;
+   vertical-align: middle;
+   margin: 10px;
+ }
+
  .overlay {
-   position: absolute;
-   left: 15px;
-   right: 15px;
-   object-fit: cover;
-   top: 0;
-   bottom: 0;
+   text-align: left;
+   padding: 20px;
+   display: inline-block;
+   border-radius: 7px;
+   vertical-align: middle;
+   margin: 10px;
    background-image: linear-gradient(to top, rgba(1, 1, 1, 1), rgba(1, 1, 1, 0.5), transparent);
  }
 
@@ -130,14 +164,4 @@ hr.style {
 
  .center {
     text-align: center;
-  }
-
-  .pic,
-  .info {
-    padding: 20px;
-    display: inline-block;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 7px;
-    vertical-align: middle;
-    margin: 10px;
   }

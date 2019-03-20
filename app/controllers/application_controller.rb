@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :authenticate_user #, :user_admin
+  helper_method :current_user, :logged_in?
 
   def logged_in?
     !!current_user
@@ -11,23 +11,22 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id] # only make the db call if there is in fact a sesion at the moment
   end
 
-  def require_login
-    redirect_to root_path unless logged_in?
-  end
+  private
 
-  # def require_user_log_in
-  #   redirect_to root_path unless logged_in?
-  # end
 
-  def authenticate_user
-    if !logged_in?
-      flash[:danger] = "You must be logged in to view that page."
-      redirect_to new_user_path
-    else logged_in?
-      flash[:info] = "You are already logged in. Welcome back!"
-      redirect_to users_path(@user)
-    end
-  end
+      def require_login
+        redirect_to root_path unless logged_in?
+      end
 
+      def find_user_by_id
+        params[:user_id] ? @user = User.find(params[:user_id]) : @user = User.find(params[:id])
+      end
+
+      def authorized?
+        if find_user_by_id != current_user
+          flash[:danger] = "You can only view your own profile page."
+          redirect_to user_path(current_user)
+        end
+      end
 
 end

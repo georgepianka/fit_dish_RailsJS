@@ -1,4 +1,27 @@
-<div class="info">
-  <h3>Welcome, <%= @user.username %>!</h3>
-  <h5>Email: <%= @user.email %></h5>
+<div class="row">
+    <div class="info">
+      <h3>Welcome, <%= @user.username %>!</h3>
+      <h5>Email: <%= @user.email %></h5>
+    </div>
+
+    <div class="overlay">
+      <%= link_to "Update Profile", edit_user_path(@user), class: "btn btn-success btn-md" %>
+    </div>
+
 </div>
+
+    <div class="notes">
+      <ul class="list">
+        <li>Eat Breakfeast</li>
+        <li>Feed Pugsly, the cow</li>
+        <li>Sit Down</li>
+        <li>Eat lunch</li>
+        <li>Call mom</li>
+        <li>Tweet about feeding my cow, pugsly</li>
+        <li>Join a hangout in google+</li>
+        <li>Prepare Dinner</li>
+        <li>Eat Dinner</li>
+        <li>Get ready for bed</li>
+        <li>Go to bed</li>
+      </ul>
+    </div>
