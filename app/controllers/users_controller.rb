@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    flash.now[:danger] = "Error."
+
   end
 
   def new
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash.now.notice = "Error. Please try again #{@user.errors.full_messages.to_sentence}."
+      flash.now[:danger]= "Failed to Create User!"
       render :new
     end
   end

@@ -11,7 +11,7 @@
   <body>
       <div class="bg">
 
-      <%= render '/layouts/navbar' if logged_in? %>
+      <%= render 'layouts/navbar' if logged_in? %>
 
         <% flash.each do |key, value| %>
           <div class="center alert alert-<%= key %>"><%= value %></div>

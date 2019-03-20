@@ -22,6 +22,7 @@ module FitDish
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+
     # Facebook required HTTPS
     #config.force_ssl = true
 
@@ -32,7 +33,7 @@ module FitDish
 
 
     #FACEBOOK LOGIN SETTINGS:
-    
+
     #Site URL
     #https://localhost:3000/
 

@@ -5,6 +5,8 @@
     <img id="mainEmoji" class="d-block mx-auto my-2" src="/FitDish.png">
     <h3 class="my-3 font-weight-bold">Sign Up!</h3>
 
+
+      <%= render partial: "layouts/show_errors", locals: {model: user} %>
       <%= form_for user do |f| %>
 
             <div class="form-group">
