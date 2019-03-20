@@ -9,7 +9,7 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
-      if @ingredient.save!
+      if @ingredient.save
         flash[:primary] = "Ingredient Added!"
         redirect_to ingredients_path
       else
@@ -23,7 +23,9 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
+    @ingredient = Ingredient.find(params[:id])
     @ingredient.destroy
+    flash[:primary] = "Ingredient Deleted!"
     redirect_to ingredients_path
   end
 

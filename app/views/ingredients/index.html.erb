@@ -1,12 +1,12 @@
 <div class="d-inline-block">
 
-  <h1 class="display-4 info">Ingredients</h1>
+  <h1 class=" display-2 text-success font-weight-bold info">Ingredients</h1>
 
-  <%= link_to 'Add New Ingredient', new_ingredient_path, class: "btn btn-success btn-md border-muted ml-3" %>
+  <%= link_to 'Add New Ingredient', new_ingredient_path, class: "btn btn-success btn-md border-muted ml-3 align-middle" %>
 
 
 
-          <ul class="list-group">
+          <ul class="list-group mb-3">
             <% @ingredients.each do |ingredient| %>
                 <li class="list-group-item">
                 <span class="align-middle"><%= ingredient.name %></span>
