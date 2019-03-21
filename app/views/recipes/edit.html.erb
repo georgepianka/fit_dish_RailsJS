@@ -1,9 +1,9 @@
-<h1 class=" display-3 text-success font-weight-bold info">Add Recipe</h1>
+<h1 class=" display-3 text-success font-weight-bold info">Edit Recipe</h1>
 <%= link_to 'Back To Recipes Index', user_recipes_path(current_user), class: "btn btn-success btn-md border border-muted ml-3 mb-3 align-middle" %>
 
 
 <%= render partial: "layouts/show_errors", locals: {model: @recipe} %>
 
 <div>
-  <%= render partial: 'form', locals: {recipe: @recipe, submit: "Add Recipe!"} %> <br>
+  <%= render partial: 'form', locals: {recipe: @recipe, submit: "Update Recipe!"} %> <br>
 </div>

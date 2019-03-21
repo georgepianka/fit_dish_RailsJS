@@ -1,0 +1,17 @@
+<div class="d-inline-block">
+
+  <h1 class=" display-2 text-success font-weight-bold info">Recipes</h1>
+
+  <%= link_to 'Add New Recipe', new_user_recipe_path(current_user, @recipe = Recipe.new), class: "btn btn-success btn-md border border-muted ml-3 mb-3 align-middle" %>
+
+
+
+          <ul class="list-group mb-3">
+            <% @recipes.each do |recipe| %>
+                <li class="list-group-item">
+                <span class="align-middle"><%= recipe.name %></span>
+                <%= link_to "Show Recipe", user_recipe_path(current_user, recipe), class: "btn btn-sm btn-primary border border-muted m-0 float-right" %>
+                </li>
+            <% end %>
+          </ul>
+  </div>
