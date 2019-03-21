@@ -50,7 +50,7 @@ Run rails s and go to http://localhost:3000/ to begin.
 
 
 Usage
-After cloning the repo, run bundle to install dependencies and then run 'rake db:migrate'. Run 'rake db:seed' to load seed data for the Countries and World Wonder lists. Run rails s and go to http://localhost:3000/ to begin. You can log in with Facebook or by setting up a new account. Once you are logged in, you can start creating trips and track all of the Countries and World Wonders you have been to or would like to plan to go to.
+After cloning the repo, run bundle to install dependencies and then run 'rake db:migrate'. Run 'rake db:seed' to load seed data. Run rails s and go to http://localhost:3000/ to begin. You can log in with Facebook or by setting up a new account. Once you are logged in, you can start creating Recipes, Adding Dishes, and Generating Your Grocery List.
 
 
 thin start --ssl
