@@ -25,7 +25,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-    raise params.inspect
     @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
       flash[:primary] = "Recipe Created!"

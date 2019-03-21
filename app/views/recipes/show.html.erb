@@ -18,7 +18,7 @@
     <ul class="list">
       <h4><b> Ingredients <b></h4><br>
       <% @recipe.recipe_ingredients.each do |ing| %>
-          <h5><li><i><%= ing.quantity %></i> &nbsp; | &nbsp; <strong><b><%= ing.ingredient.name %></strong></b></li></h5>
+          <h5><li><i><span class="m-2"><%= ing.quantity %></i><span class="text-center m-5">&nbsp;</span> <strong><b><%= ing.ingredient.name %></strong></b></li></h5>
       <% end %>
     </ul>
   </div>
