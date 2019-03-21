@@ -6,8 +6,48 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-100. times do
-  User.create(
+product_hash = {product_attr1: product_attr1_val, product_attr2: product_attr2_val, attachementes_attributes: [{attach_attr1: attach_attr1_val}, {attach_attr1: attach_attr1_val}] }
+Product.create(product_hash)
+
+  User.last.recipes.create({name: "Smore", description: "Really Delicious", instructions: "Squish Marshmallow and Chocolate Between Graham Crackers and Stick it in the Fire!", recipe_ingredients_attributes: [{quantity: "2 pieces", {i}}]  )
+    username: Faker::Name.name,
+    email: Faker::Internet.free_email,
+    password: "password",
+    password_confirmation: "password"
+  )
+end
+
+=begin
+
+
+
+george = User.create(
+  username: George,
+  email: george@email.com,
+  password: "password1",
+  password_confirmation: "password1"
+)
+
+paul = User.create(
+  username: Paul,
+  email: paul@email.com,
+  password: "password2",
+  password_confirmation: "password2"
+)
+
+mark = User.create(
+  username: Mark,
+  email: mark@email.com,
+  password: "password3",
+  password_confirmation: "password3"
+)
+
+
+product_hash = {product_attr1: product_attr1_val, product_attr2: product_attr2_val, attachementes_attributes: [{attach_attr1: attach_attr1_val}, {attach_attr1: attach_attr1_val}] }
+Product.create(product_hash)
+
+10. times do
+  george.recipes.create(name: , description: , instructions: ,  )
     username: Faker::Name.name,
     email: Faker::Internet.free_email,
     password: "password",
@@ -25,3 +65,6 @@ recipes = Recipe.create([
     name: Faker::Food.ingredient
   )
 end
+
+
+=end
