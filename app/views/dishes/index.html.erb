@@ -5,7 +5,7 @@
 
   <div class='recipe-container'>
 
-  <% @dishs.each do |recipe| %>
+  <% @dishes.each do |recipe| %>
     <div class="recipe-card">
       <%= image_tag recipe.image.thumb.url, class: 'recipe-img'%>
       <%= link_to recipe.name, recipe_path(recipe), class:'name' %>

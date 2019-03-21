@@ -1,0 +1,48 @@
+<div class="info">
+    <%= form_for recipe do |f| %>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%=f.label :name %><br>
+            <%=f.text_field :name, placeholder: "Recipe Name", class: "form-control-lg" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%=f.label :description %><br>
+            <%=f.text_field :description, placeholder: "Description", class: "form-control-lg" %>
+          </div>
+        </div>
+        <div class="form-group">
+           <%=f.label :instructions %><br>
+           <%=f.text_area :instructions, placeholder: "Instructions", class: "form-control-lg" %>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Ingredient:</th>
+              <th>Quantity:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= f.fields_for :cocktail_ingredients do |ci| %>
+              <%= ci.fields_for :ingredient do |i| %>
+                <tr>
+                  <div class="form-group">
+                    <td><%= i.text_field :name, list: "ingredients_autocomplete", placeholder: "Ingredient Name", class: "form-control-sm" %>
+                      <datalist id="ingredients_autocomplete">
+                        <% Ingredient.all.each do |ing| %>
+                          <option value="<%= ing.name %>">
+                        <% end %>
+                      </datalist>
+                    </td>
+                    <td><%= ci.text_field :quantity, placeholder: "How Much?", class: "form-control-sm" %></td>
+                  </div>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table><br>
+
+        <%= f.submit submit, class: "btn btn-success btn-lg" %>
+    <% end %>
+</div>

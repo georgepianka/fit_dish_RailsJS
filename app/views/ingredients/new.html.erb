@@ -1,10 +1,10 @@
 
   <h1 class=" display-3 text-success font-weight-bold info">Add Ingredient</h1>
-  <%= link_to 'Back To Ingredient Index', ingredients_path, class: "btn btn-success btn-md border-muted ml-3 align-middle" %>
+  <%= link_to 'Back To Ingredients Index', ingredients_path, class: "btn btn-success btn-md border-muted ml-3 align-middle" %>
 
 
   <%= render partial: "layouts/show_errors", locals: {model: @ingredient} %>
 
-  <div class="d-block">
+  <div>
     <%= render partial: 'form', locals: {ingredient: @ingredient, submit: "Add Ingredient!"} %> <br>
   </div>

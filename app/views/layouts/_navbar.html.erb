@@ -6,13 +6,13 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="<%= user_path(current_user) %>">Your Profile</a>
+        <a class="nav-link" href="<%= user_path(current_user) %>">Grocery List</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= user_dishes_path(current_user) %>">Grocery List</a>
+        <a class="nav-link" href="<%= user_dishes_path(current_user) %>">Your Dishes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= new_user_recipe_path(current_user, @recipe = Recipe.new) %>">Create Recipe</a>
+        <a class="nav-link" href="<%= new_user_recipe_path(current_user, @recipe = Recipe.new) %>">New Recipe</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<%= new_ingredient_path(@ingredient = Ingredient.new) %>">New Ingredient</a>
