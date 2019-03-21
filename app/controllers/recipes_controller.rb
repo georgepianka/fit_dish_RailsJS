@@ -37,15 +37,16 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    4.times { @recipe.recipe_ingredients.build.build_ingredient }
   end
 
   def update
-    @recipe.update(user_params)
-    if @recipe.save
+    if @recipe.update(recipe_params)
       flash[:primary] = "Recipe Info Updated!"
       redirect_to user_recipe_path(current_user, @recipe)
     else
       flash.now[:danger] = "Failed to Update Recipe!"
+      4.times { @recipe.recipe_ingredients.build.build_ingredient }
       render :edit
     end
   end
@@ -64,7 +65,7 @@ class RecipesController < ApplicationController
 
       def recipe_params
         params.require(:recipe).permit(:name, :description, :instructions,
-         recipe_ingredients_attributes: [:quantity,
+         recipe_ingredients_attributes: [:id, :quantity, :_destroy,
          ingredient_attributes: [:name]])
       end
 end

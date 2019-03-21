@@ -35,7 +35,13 @@
                         <% end %>
                       </datalist>
                     </td>
-                    <td><%= recipe_ingredient.text_field :quantity, placeholder: "How Much?", class: "form-control-sm" %></td>
+                    <td>
+                      <%= recipe_ingredient.text_field :quantity, placeholder: "How Much?", class: "form-control-sm" %>
+                      <% if recipe_ingredient.object.persisted? %>
+                         <%= recipe_ingredient.check_box :_destroy %>
+                         <%= recipe_ingredient.label :_destroy, "Remove" %>
+                      <% end %>
+                    </td>
                   </div>
                 </tr>
               <% end %>

@@ -12,6 +12,6 @@ class Recipe < ApplicationRecord
   validates :description, presence: true
   validates :instructions, presence: true
 
-  accepts_nested_attributes_for :recipe_ingredients, :reject_if => proc{|recipe_ingredient| recipe_ingredient[:quantity].blank? && recipe_ingredient[:ingredient_attributes][:name].blank?}
+  accepts_nested_attributes_for :recipe_ingredients, :allow_destroy => true, :reject_if => proc{|recipe_ingredient| recipe_ingredient[:quantity].blank? && recipe_ingredient[:ingredient_attributes][:name].blank?}
 
 end
