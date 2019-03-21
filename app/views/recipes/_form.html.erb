@@ -1,5 +1,5 @@
 <div class="info">
-    <%= form_for recipe do |f| %>
+    <%= form_for [current_user, recipe] do |f| %>
 
         <div class="form-row">
           <div class="form-group col-md-6">
@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
            <%=f.label :instructions %><br>
-           <%=f.text_area :instructions, placeholder: "Instructions", class: "form-control-lg" %>
+           <%=f.text_area :instructions, placeholder: "Instructions", class: "form-control-lg", style: "min-width: 100%" %>
         </div>
 
         <table>
@@ -24,18 +24,18 @@
             </tr>
           </thead>
           <tbody>
-            <%= f.fields_for :cocktail_ingredients do |ci| %>
-              <%= ci.fields_for :ingredient do |i| %>
+            <%= f.fields_for :recipe_ingredients do |recipe_ingredient| %>
+              <%= recipe_ingredient.fields_for :ingredient do |ingredient| %>
                 <tr>
                   <div class="form-group">
-                    <td><%= i.text_field :name, list: "ingredients_autocomplete", placeholder: "Ingredient Name", class: "form-control-sm" %>
+                    <td><%= ingredient.text_field :name, list: "ingredients_autocomplete", placeholder: "Ingredient Name", class: "form-control-sm" %>
                       <datalist id="ingredients_autocomplete">
                         <% Ingredient.all.each do |ing| %>
                           <option value="<%= ing.name %>">
                         <% end %>
                       </datalist>
                     </td>
-                    <td><%= ci.text_field :quantity, placeholder: "How Much?", class: "form-control-sm" %></td>
+                    <td><%= recipe_ingredient.text_field :quantity, placeholder: "How Much?", class: "form-control-sm" %></td>
                   </div>
                 </tr>
               <% end %>

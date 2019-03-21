@@ -6,7 +6,7 @@ class RecipeIngredient < ApplicationRecord
 
   def ingredient_attributes=(ingredient_attributes)
     ingredient_attributes.values.each do |val|
-      if attr.present?
+      if val.present?
         self.ingredient = Ingredient.where(name: val).first_or_create
       end
     end

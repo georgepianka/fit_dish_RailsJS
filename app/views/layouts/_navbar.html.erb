@@ -18,7 +18,7 @@
         <a class="nav-link" href="<%= new_ingredient_path(@ingredient = Ingredient.new) %>">New Ingredient</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= recipes_path %>">Recipes Index</a>
+        <a class="nav-link" href="<%= user_recipes_path(current_user) %>">Recipes Index</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<%= ingredients_path %>">Ingredients Index</a>

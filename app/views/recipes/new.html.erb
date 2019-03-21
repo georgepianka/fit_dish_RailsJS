@@ -1,5 +1,5 @@
 <h1 class=" display-3 text-success font-weight-bold info">Add Recipe</h1>
-<%= link_to 'Back To Recipes Index', recipes_path, class: "btn btn-success btn-md border-muted ml-3 align-middle" %>
+<%= link_to 'Back To Recipes Index', user_recipes_path(current_user), class: "btn btn-success btn-md border-muted ml-3 mb-3 align-middle" %>
 
 
 <%= render partial: "layouts/show_errors", locals: {model: @recipe} %>

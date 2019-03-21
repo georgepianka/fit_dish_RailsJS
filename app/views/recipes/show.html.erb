@@ -1,0 +1,33 @@
+<div class="d-inline-block">
+
+  <h1 class=" display-4 text-success font-weight-bold info"><%= @recipe.name %></h1>
+  <%= link_to 'Back to Recipes Index', user_recipes_path(current_user), class: "btn btn-success btn-md border-muted ml-3 mb-2 align-middle" %>
+  <div>
+    <% if @user == current_user %>
+    <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe), class: "btn btn-info btn-md border border-muted ml-3 align-middle"%>
+    <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), class: "btn btn-dark border btn-md border-muted ml-3 align-middle", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+
+  <div class="info">
+    <h4><b> Description <b></h5>
+    <h6><%= @recipe.description %></h6>
+  </div>
+
+  <div class="notes">
+    <ul class="list">
+      <h4><b> Ingredients <b></h4><br>
+      <% @recipe.recipe_ingredients.each do |ing| %>
+          <h5><li><i><%= ing.quantity %></i> &nbsp; | &nbsp; <strong><b><%= ing.ingredient.name %></strong></b></li></h5>
+      <% end %>
+    </ul>
+  </div>
+
+  <ul class="list-group m-2">
+        <li class="list-group-item p-3">
+        <h4><b> Instructions <b></h4>
+        <%= @recipe.instructions %>
+        </li>
+  </ul>
+
+</div>

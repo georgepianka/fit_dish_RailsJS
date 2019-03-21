@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
 
   def show
     set_recipe
+    find_user_by_id
   end
 
   def new
@@ -15,7 +16,7 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
       flash[:primary] = "Recipe Created!"
-      redirect_to recipe_path(@recipe)
+      redirect_to user_recipe_path(current_user, @recipe)
     else
       flash.now[:danger] = "Failed to Create Recipe!"
     # 12.times { @recipe.recipe_ingredients.build.build_ingredient }
@@ -23,7 +24,12 @@ class RecipesController < ApplicationController
     end
   end
 
-
+  def destroy
+    set_recipe
+    @recipe.destroy
+    flash[:primary] = "Recipe Deleted!"
+    redirect_to user_recipes_path(current_user)
+  end
 
   private
 
