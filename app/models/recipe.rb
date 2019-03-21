@@ -14,4 +14,17 @@ class Recipe < ApplicationRecord
 
   accepts_nested_attributes_for :recipe_ingredients, :allow_destroy => true, :reject_if => proc{|recipe_ingredient| recipe_ingredient[:quantity].blank? && recipe_ingredient[:ingredient_attributes][:name].blank?}
 
+  scope :recent, -> { order('created_at desc') }
+  scope :alphabetical, -> { order('name ASC') }
+  # scope :popular, ->
+
+  def self.search_by_name(name)
+    where('name ILIKE ?', "%#{name}%")
+  end
+
+  def self.search_by_ingredient(ingredient_name)
+    joins(recipe_ingredients: :ingredient).where('ingredients.name ILIKE ?', "%#{ingredient_name}%")
+  end
+
+
 end

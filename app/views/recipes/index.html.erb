@@ -1,12 +1,52 @@
 <div class="d-inline-block">
 
-  <h1 class=" display-2 text-success font-weight-bold info">Recipes</h1>
+  <h1 class=" display-1 text-success font-weight-bold info">Recipes</h1>
 
   <%= link_to 'Add New Recipe', new_user_recipe_path(current_user, @recipe = Recipe.new), class: "btn btn-success btn-md border border-muted ml-3 mb-3 align-middle" %>
+  <div>
+    <% if @recipes.empty? %>
+    <h5> No Results </h5>
+    <% else %>
+    <h5> <%= @recipes.count %> Results </h5>
+    <% end %>
+  </div>
+   <div class="border rounded border-muted">
+      <div class="d-inline-flex p-2">
+        <%= form_tag user_recipes_path(current_user), method: :get, id: 'filter_form' do %>
+          <%= hidden_field_tag :filter, "your_recipes" %>
+        <%= submit_tag 'Your Recipes', class: "btn btn-info btn-sm border border-muted align-middle" %>
+        <% end %>
+        <%= form_tag user_recipes_path(current_user), method: :get, id: 'filter_form' do %>
+          <%= hidden_field_tag :order, "recent" %>
+        <%= submit_tag 'Recent', class: "btn btn-secondary btn-sm border border-muted align-middle ml-3" %>
+        <% end %>
+        <%= form_tag user_recipes_path(current_user), method: :get, id: 'filter_form' do %>
+          <%= hidden_field_tag :order, "popular" %>
+        <%= submit_tag 'Popular', class: "btn btn-secondary btn-sm border border-muted align-middle ml-3" %>
+        <% end %>
+        <%= form_tag user_recipes_path(current_user), method: :get, id: 'filter_form' do %>
+          <%= hidden_field_tag :order, "alphabetical" %>
+        <%= submit_tag 'Alphabetical', class: "btn btn-secondary btn-sm border border-muted align-middle ml-3" %>
+        <% end %>
+      </div>
+
+      <div class="d-inline-flex p-2">
+        <%= form_tag user_recipes_path(current_user), method: :get, id: 'search_form' do %>
+          <%= text_field_tag :name, nil, placeholder: "Search by Name", class: "form-control-sm align-middle" %>
+        <%= submit_tag 'Search', class: "btn btn-secondary btn-sm border border-muted align-middle" %>
+        <% end %>
+        <%= form_tag user_recipes_path(current_user), method: :get, id: 'search_form' do %>
+          <%= text_field_tag :ingredient_name, nil, placeholder: "Search by Ingredient", class: "form-control-sm ml-3 align-middle" %>
+        <%= submit_tag 'Search', class: "btn btn-secondary btn-sm border border-muted align-middle" %>
+        <% end %>
+   </div>
+
+   </div>
 
 
 
-          <ul class="list-group mb-3">
+
+          <ul class="list-group mt-1 mb-3">
             <% @recipes.each do |recipe| %>
                 <li class="list-group-item p-1">
                 <span class="align-middle"><%= recipe.name %></span>
@@ -15,3 +55,40 @@
             <% end %>
           </ul>
   </div>
+
+
+<% if false %>
+
+  <div class="index">
+  <h1><u>World Wonders Index</u></h1>
+  <%= @world_wonders.count %>
+
+
+    <%= form_tag world_wonders_path, method: :get do %>
+      <p>Search by Region: <%= select_tag :region, options_for_select([nil, 'Europe', 'Asia', 'Middle East', 'North America', 'South America', 'Pacific', 'Australia'], selected = nil) %></p>
+      <p>and/or, Search by Category: <%= select_tag :category, options_for_select([nil, 'Natural', 'Man-Made'], selected = nil) %>
+    <%= submit_tag "Search" %><% end %></p>
+    <%= form_tag world_wonders_path, method: :get do %>
+      <p>or, Search by name: <%= text_field_tag :name, params[:name], placeholder: "Search by name" %>
+    <%= submit_tag 'Search', :name => nil %><% end %></p>
+    <%= form_tag world_wonders_path, method: :get do %>
+    <%= submit_tag 'See All' %><% end %></p>
+</div>
+
+
+  <% yield %>
+
+  <% if @world_wonders.empty? %>
+    <p>Sorry, no matches. Please try again.</p>
+  <% else %>
+    <%= render partial: 'filter' %>
+  <% end %>
+
+
+  <%= form_for [current_user, Meal.new] do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :recipe_id, :value => recipe.id %>
+        <%= f.submit "Add to Meal Plan" %>
+    <% end %>
+
+<% end %>

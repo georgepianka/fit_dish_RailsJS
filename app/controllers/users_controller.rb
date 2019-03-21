@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    find_user_by_id
   end
 
   def create

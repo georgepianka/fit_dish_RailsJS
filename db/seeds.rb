@@ -25,7 +25,7 @@ mark = User.create(
 
 george.recipes.create({"name"=>"Smores", "description"=>"Delicious Fireside Treat", "instructions"=>"Squish Chocolate and Marshmallow Between Graham Crackers and Stick in Fire.", "recipe_ingredients_attributes"=>{"0"=>{"ingredient_attributes"=>{"name"=>"Chocolate"}, "quantity"=>"1 Piece"}, "1"=>{"ingredient_attributes"=>{"name"=>"Marshmallow"}, "quantity"=>"2 Pieces"}, "2"=>{"ingredient_attributes"=>{"name"=>"Graham Cracker"}, "quantity"=>"2 Pieces"}}})
 
-20. times do
+50. times do
     george.recipes.create({
         "name"=>Faker::Food.dish, "description"=>Faker::Food.description, "instructions"=>Faker::Lorem.paragraph(16), "recipe_ingredients_attributes"=>{
             "0"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "1"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "2"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "3"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "4"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "5"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}
@@ -33,7 +33,7 @@ george.recipes.create({"name"=>"Smores", "description"=>"Delicious Fireside Trea
     })
 end
 
-20. times do
+50. times do
     paul.recipes.create({
         "name"=>Faker::Food.dish, "description"=>Faker::Food.description, "instructions"=>Faker::Lorem.paragraph(16), "recipe_ingredients_attributes"=>{
             "0"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "1"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "2"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "3"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "4"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "5"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}
@@ -41,7 +41,7 @@ end
     })
 end
 
-20. times do
+50. times do
     mark.recipes.create({
         "name"=>Faker::Food.dish, "description"=>Faker::Food.description, "instructions"=>Faker::Lorem.paragraph(16), "recipe_ingredients_attributes"=>{
             "0"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "1"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "2"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "3"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "4"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "5"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}

@@ -1,22 +1,23 @@
 class RecipesController < ApplicationController
   before_action :require_login
+  before_action :authorized?
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def show
   end
 
   def index
-=begin
-    if params[:region] && params[:category]
-      @world_wonders = WorldWonder.search(params[:region], params[:category])
-   elsif params[:name]
-     @world_wonders = WorldWonder.search_name(params[:name])
+    if params[:order]
+      @recipes = Recipe.send("#{params[:order]}")
+    elsif params[:filter]
+      @recipes = current_user.recipes
+    elsif params[:name]
+      @recipes = Recipe.search_by_name(params[:name])
+    elsif params[:ingredient_name]
+      @recipes = Recipe.search_by_ingredient(params[:ingredient_name])
     else
-      @world_wonders = WorldWonder.all.ordered
-    end
-=end
-      @user_recipes = current_user.recipes
       @recipes = Recipe.all
+    end
   end
 
   def new
