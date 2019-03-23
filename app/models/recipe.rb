@@ -12,6 +12,8 @@ class Recipe < ApplicationRecord
   validates :description, presence: true
   validates :instructions, presence: true
 
+  validates :recipe_ingredients, presence: true
+
   accepts_nested_attributes_for :recipe_ingredients, :allow_destroy => true, :reject_if => proc{|recipe_ingredient| recipe_ingredient[:quantity].blank? && recipe_ingredient[:ingredient_attributes][:name].blank?}
 
   scope :recent, -> { order( created_at: :desc) }

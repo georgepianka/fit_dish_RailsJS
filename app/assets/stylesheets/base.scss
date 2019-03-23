@@ -83,6 +83,8 @@ hr.style {
  .field_with_errors {
    color: rgb(216,54,72);
  }
+ /*To override and wrap in spans instead of divs place the following in your environment.rb:
+ ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class=\"fieldWithErrors\">#{html_tag}</span>" }*/
 
  span.field_with_errors input[type] {
    border: 2px solid red;

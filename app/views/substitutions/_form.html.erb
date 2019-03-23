@@ -5,3 +5,19 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.submit "Recommend Substitution" %>
 <% end %>
+
+
+
+<div class="info">
+    <%= form_for ingredient do |f| %>
+
+          <div class="form-group">
+             <%=f.label :name %><br>
+             <%=f.text_field :name, placeholder: "Ingredient Name", class: "form-control-lg" %>
+          </div>
+
+          <%= f.submit submit, class: "btn btn-success btn-lg" %>
+
+    <% end %>
+
+</div>
