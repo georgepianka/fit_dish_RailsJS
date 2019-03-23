@@ -23,4 +23,16 @@ class User < ApplicationRecord
       end
   end
 
+  def like(recipe)
+      self.likes.build(recipe_id: recipe.id)
+  end
+
+  def unlike(recipe)
+      self.likes.find_by_recipe_id(recipe.id).destroy!
+end
+
+  def like?(recipe)
+      self.likes.find_by_recipe_id(recipe.id)
+  end
+
 end

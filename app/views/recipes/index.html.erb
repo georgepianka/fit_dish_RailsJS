@@ -49,8 +49,14 @@
           <ul class="list-group mt-1 mb-3">
             <% @recipes.each do |recipe| %>
                 <li class="list-group-item p-1">
-                <span class="align-middle"><%= recipe.name %></span>
-                <%= link_to "Show Recipe", user_recipe_path(current_user, recipe), class: "btn btn-sm btn-primary border border-muted m-0 float-right" %>
+                <span class="align-middle float-left"><%= recipe.name %></span>
+                <%= link_to "Show Recipe", user_recipe_path(current_user, recipe), class: "btn btn-sm btn-primary border border-muted ml-5 float-right" %>
+                <span class="align-middle float-right mr-5 h5">
+                  <% if recipe.likes.count > 0 %>
+                   <%= recipe.likes.count  %><i class="fas fa-grin-hearts"></i>
+                  <% end %>
+                 </span>
+
                 </li>
             <% end %>
           </ul>
