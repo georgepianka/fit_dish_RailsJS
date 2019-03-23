@@ -1,21 +1,41 @@
-<% if @dishes.empty? %>
-  <h3>You have not added any recipes to your dish plan!</h3>
-<% else %>
-  <h3>Your dishes</h3>
+<h1 class=" display-3 text-success font-weight-bold info">Dishes</h1>
 
+<% if @dishes.empty? %>
+  <h3>You have not added any Dishes Yet!</h3>
+<% end %>
+<div>
+<div class="d-inline-block">
   <ul class="list-group mt-1 mb-3">
-    <% @dishes.each do |recipe| %>
+    <% @dishes.each do |dish| %>
         <li class="list-group-item">
-        <span class="float-left pt-1"><%= recipe.name %></span>
-        <%= link_to "Show Recipe", user_recipe_path(current_user, recipe), class: "btn btn-sm btn-primary border border-muted ml-5 float-right" %>
-        <span class="float-right mr-5">
-          <% if recipe.likes.count > 0 %>
-           <%= recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts align-middle"></i>
+        <span class="float-left pt-1"><%= dish.recipe.name %></span>
+        <%= link_to "Delete Dish", user_dish_path(current_user, dish), class: "btn btn-dark border btn-sm border-muted ml-3 align-middle float-right", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to "Show Recipe", user_recipe_path(current_user, dish.recipe), class: "btn btn-sm btn-primary border border-muted ml-2 float-right" %>
+        <span class="float-right mr-2 ml-4 ">
+          <% if dish.recipe.likes.count > 0 %>
+           <%= dish.recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts align-middle"></i>
           <% end %>
          </span>
-
         </li>
     <% end %>
   </ul>
+</div>
+</div>
 
-<% end %>
+<h1 class=" display-3 text-success font-weight-bold info">Grocery List</h1>
+
+    <% if @dishes.empty? %>
+      <h3>You have not added any Dishes Yet!</h3>
+    <% end %>
+    <div>
+      <div class="notes">
+        <ul class="list">
+          <% @dishes.each do |dish| %>
+           <h4 class="mt-4"><b> <%= dish.recipe.name %> <b></h4><br>
+            <% dish.recipe.recipe_ingredients.each do |ing| %>
+              <h5><li><i><%= ing.quantity %></i><span class="float-right ml-3"><strong><b><%= ing.ingredient.name %></span></strong></b></li></h5>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>

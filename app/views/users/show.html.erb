@@ -1,26 +1,28 @@
-<div class="row">
-    <div class="info">
-      <h3>Welcome, <%= @user.username %>!</h3>
-      <h5>Email: <%= @user.email %></h5>
+
+    <div class="info text-info display-3">
+      <h2>Welcome, <%= @user.username %>!</h2>
+      <h4>Email: <%= @user.email %></h4>
     </div>
 
-    <div class="align-top">
-          <%= link_to "Update Profile", edit_user_path(@user), class: "btn btn-success btn-md" %>
-    </div>
-</div>
+    <%= link_to "Update Profile", edit_user_path(@user), class: "btn btn-success btn-md border border-muted ml-3 mb-3 align-middle" %>
 
-    <div class="notes">
-      <ul class="list">
-        <li>Eat Breakfeast</li>
-        <li>Feed Pugsly, the cow</li>
-        <li>Sit Down</li>
-        <li>Eat lunch</li>
-        <li>Call mom</li>
-        <li>Tweet about feeding my cow, pugsly</li>
-        <li>Join a hangout in google+</li>
-        <li>Prepare Dinner</li>
-        <li>Eat Dinner</li>
-        <li>Get ready for bed</li>
-        <li>Go to bed</li>
-      </ul>
-    </div>
+  <div>
+    <h1 class=" display-3 text-success font-weight-bold info">Grocery List</h1>
+
+        <% if @user.dishes.empty? %>
+          <h3>You have not added any Dishes Yet!</h3>
+        <% end %>
+        <div>
+          <div class="notes">
+            <ul class="list">
+              <% @user.dishes.each do |dish| %>
+               <h4 class="mt-4"><b> <%= dish.recipe.name %> <b></h4><br>
+                <% dish.recipe.recipe_ingredients.each do |ing| %>
+                  <h5><li><i><%= ing.quantity %></i><span class="float-right ml-3"><strong><b><%= ing.ingredient.name %></span></strong></b></li></h5>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+      </div>
