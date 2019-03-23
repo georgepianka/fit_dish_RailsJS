@@ -17,7 +17,7 @@ class Recipe < ApplicationRecord
   scope :recent, -> { order( created_at: :desc) }
   scope :alphabetical, -> { order( name: :asc) }
   scope :your_recipes, -> (user) { where(user_id: user) }
-  # scope :popular, ->
+  scope :popular, -> { left_joins(:likes).group(:id).order(Arel.sql('COUNT(likes.id) DESC')) }
 
   def self.search_by_name(name)
     where('name ILIKE ?', "%#{name}%")

@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
       when "alphabetical"
         @recipes = Recipe.alphabetical
       when "popular"
-        @recipes = Recipe.popular.recent
+        @recipes = Recipe.popular.recent.all
      end
      if params[:ingredient_name]
       @recipes = Recipe.search_by_ingredient(params[:ingredient_name])

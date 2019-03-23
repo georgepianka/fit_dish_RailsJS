@@ -7,7 +7,7 @@
     <% if @recipes.empty? %>
     <h5> No Results </h5>
     <% else %>
-    <h5> <%= @recipes.count %> Results <%= 'for' + " #{@search_term}".upcase if !@search_term.blank? %> </h5>
+    <h5> <%= @recipes.uniq.count %> Results <%= 'for' + " #{@search_term}".upcase if !@search_term.blank? %> </h5>
     <% end %>
   </div>
    <div class="border rounded border-muted">
