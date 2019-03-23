@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   end
 
   resources :recipes, only: %i[show] do
-    resources :ingredients, only: %i[index new create]
     resources :substitutions, only: %i[new create]
   end
 

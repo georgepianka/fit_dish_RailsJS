@@ -6,6 +6,7 @@
   </div>
   <div>
    <div class="d-inline-flex border rounded border-muted p-2 m-2">
+     <%= render partial: 'dishes/form', locals: {recipe: @recipe, current_user: current_user} %>
      <div id="like_button">
       <%= render partial: 'likes/button', locals: { recipe: @recipe } %>
     </div>

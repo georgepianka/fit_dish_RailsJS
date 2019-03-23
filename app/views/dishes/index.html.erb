@@ -1,26 +1,21 @@
 <% if @dishes.empty? %>
   <h3>You have not added any recipes to your dish plan!</h3>
 <% else %>
-  <h3>Your dishs</h3>
+  <h3>Your dishes</h3>
 
-  <div class='recipe-container'>
+  <ul class="list-group mt-1 mb-3">
+    <% @dishes.each do |recipe| %>
+        <li class="list-group-item">
+        <span class="float-left pt-1"><%= recipe.name %></span>
+        <%= link_to "Show Recipe", user_recipe_path(current_user, recipe), class: "btn btn-sm btn-primary border border-muted ml-5 float-right" %>
+        <span class="float-right mr-5">
+          <% if recipe.likes.count > 0 %>
+           <%= recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts align-middle"></i>
+          <% end %>
+         </span>
 
-  <% @dishes.each do |recipe| %>
-    <div class="recipe-card">
-      <%= image_tag recipe.image.thumb.url, class: 'recipe-img'%>
-      <%= link_to recipe.name, recipe_path(recipe), class:'name' %>
-      <p class='description'><%= recipe.description %></p>
-      <p class='note'>&#x2605; <%= recipe.dishs.last.note %></p>
-      <small><%= link_to "Delete", user_dish_path(current_user, recipe.dishs.ids), :confirm => "Are you sure?", :method => :delete %></small>
-    </div>
-  <% end %>
+        </li>
+    <% end %>
+  </ul>
 
-  </div>
-
-  <h3>Grocery List</h3>
-  <% @ingredients.each do |ingredient| %>
-      <ul>
-          <li><%= ingredient %></li>
-      </ul>
-  <% end %>
 <% end %>
