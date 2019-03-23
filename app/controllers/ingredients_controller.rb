@@ -24,7 +24,7 @@ class IngredientsController < ApplicationController
 
   def destroy
     @ingredient = Ingredient.find(params[:id])
-    @ingredient.destroy
+    @ingredient.destroy!
     flash[:primary] = "Ingredient Deleted!"
     redirect_to ingredients_path
   end

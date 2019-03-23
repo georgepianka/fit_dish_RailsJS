@@ -1,26 +1,35 @@
 <div class="d-inline-block">
 
-  <h1 class=" display-4 text-success font-weight-bold info"><%= @recipe.name %></h1>
-  <%= link_to 'Back to Recipes Index', user_recipes_path(current_user), class: "btn btn-success btn-md border border-muted ml-3 mb-2 align-middle" %>
+  <h1 class=" display-3 text-success font-weight-bold info"><%= @recipe.name %></h1>
+  <div id="like_box" class="d-inline">
+    <%= render partial: 'likes/box', locals: { recipe: @recipe } %>
+  </div>
   <div>
+   <div class="d-inline-flex border rounded border-muted p-2 m-2">
+     <div id="like_button">
+      <%= render partial: 'likes/button', locals: { recipe: @recipe } %>
+    </div>
     <% if @recipe.user == current_user %>
-    <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe), class: "btn btn-info btn-md border border-muted ml-3 align-middle"%>
+    <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe), class: "btn btn-secondary btn-md border border-muted ml-3 align-middle"%>
     <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), class: "btn btn-dark border btn-md border-muted ml-3 align-middle", method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
+    <%= link_to 'Back to Recipes Index', user_recipes_path(current_user), class: "btn btn-success btn-md border border-muted ml-3 align-middle" %>
+   </div>
   </div>
 
   <div class="info">
     <h4><b> Description <b></h5>
     <h6><%= @recipe.description %></h6>
   </div>
-
-  <div class="notes">
-    <ul class="list">
-      <h4><b> Ingredients <b></h4><br>
-      <% @recipe.recipe_ingredients.each do |ing| %>
-          <h5><li><i><span class="m-2"><%= ing.quantity %></i><span class="m-5">&nbsp;</span><span class="float-right"><strong><b><%= ing.ingredient.name %></span></strong></b></li></h5>
-      <% end %>
-    </ul>
+  <div>
+    <div class="notes">
+      <ul class="list">
+        <h4><b> Ingredients <b></h4><br>
+        <% @recipe.recipe_ingredients.each do |ing| %>
+            <h5><li><i><span class="m-2"><%= ing.quantity %></i><span class="m-5">&nbsp;</span><span class="float-right"><strong><b><%= ing.ingredient.name %></span></strong></b></li></h5>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
   <ul class="list-group m-2">

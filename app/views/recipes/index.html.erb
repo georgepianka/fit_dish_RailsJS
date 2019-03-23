@@ -43,17 +43,14 @@
 
    </div>
 
-
-
-
           <ul class="list-group mt-1 mb-3">
             <% @recipes.each do |recipe| %>
-                <li class="list-group-item p-1">
-                <span class="align-middle float-left"><%= recipe.name %></span>
+                <li class="list-group-item">
+                <span class="float-left pt-1"><%= recipe.name %></span>
                 <%= link_to "Show Recipe", user_recipe_path(current_user, recipe), class: "btn btn-sm btn-primary border border-muted ml-5 float-right" %>
-                <span class="align-middle float-right mr-5 h5">
+                <span class="float-right mr-5">
                   <% if recipe.likes.count > 0 %>
-                   <%= recipe.likes.count  %><i class="fas fa-grin-hearts"></i>
+                   <%= recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts align-middle"></i>
                   <% end %>
                  </span>
 
@@ -61,40 +58,3 @@
             <% end %>
           </ul>
   </div>
-
-
-<% if false %>
-
-  <div class="index">
-  <h1><u>World Wonders Index</u></h1>
-  <%= @world_wonders.count %>
-
-
-    <%= form_tag world_wonders_path, method: :get do %>
-      <p>Search by Region: <%= select_tag :region, options_for_select([nil, 'Europe', 'Asia', 'Middle East', 'North America', 'South America', 'Pacific', 'Australia'], selected = nil) %></p>
-      <p>and/or, Search by Category: <%= select_tag :category, options_for_select([nil, 'Natural', 'Man-Made'], selected = nil) %>
-    <%= submit_tag "Search" %><% end %></p>
-    <%= form_tag world_wonders_path, method: :get do %>
-      <p>or, Search by name: <%= text_field_tag :name, params[:name], placeholder: "Search by name" %>
-    <%= submit_tag 'Search', :name => nil %><% end %></p>
-    <%= form_tag world_wonders_path, method: :get do %>
-    <%= submit_tag 'See All' %><% end %></p>
-</div>
-
-
-  <% yield %>
-
-  <% if @world_wonders.empty? %>
-    <p>Sorry, no matches. Please try again.</p>
-  <% else %>
-    <%= render partial: 'filter' %>
-  <% end %>
-
-
-  <%= form_for [current_user, Meal.new] do |f| %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.hidden_field :recipe_id, :value => recipe.id %>
-        <%= f.submit "Add to Meal Plan" %>
-    <% end %>
-
-<% end %>

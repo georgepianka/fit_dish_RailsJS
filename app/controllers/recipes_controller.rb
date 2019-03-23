@@ -60,7 +60,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe.destroy
+    @recipe.destroy!
     flash[:primary] = "Recipe Deleted!"
     redirect_to user_recipes_path(current_user)
   end

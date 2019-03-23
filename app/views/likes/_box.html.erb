@@ -1,0 +1,5 @@
+<% if @recipe.likes.count > 0 %>
+    <div class="info text-info h2">
+      <%= @recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts align-middle"></i>
+    </div>
+<% end %>
