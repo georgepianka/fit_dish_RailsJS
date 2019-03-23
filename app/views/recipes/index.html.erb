@@ -7,13 +7,13 @@
     <% if @recipes.empty? %>
     <h5> No Results </h5>
     <% else %>
-    <h5> <%= @recipes.count %> Results </h5>
+    <h5> <%= @recipes.count %> Results <%= 'for' + " #{@search_term}".upcase if !@search_term.blank? %> </h5>
     <% end %>
   </div>
    <div class="border rounded border-muted">
       <div class="d-inline-flex p-2">
         <%= form_tag user_recipes_path(current_user), method: :get, id: 'filter_form' do %>
-          <%= hidden_field_tag :filter, "your_recipes" %>
+          <%= hidden_field_tag :order, "your_recipes" %>
         <%= submit_tag 'Your Recipes', class: "btn btn-info btn-sm border border-muted align-middle" %>
         <% end %>
         <%= form_tag user_recipes_path(current_user), method: :get, id: 'filter_form' do %>

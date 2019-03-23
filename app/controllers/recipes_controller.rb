@@ -7,17 +7,24 @@ class RecipesController < ApplicationController
   end
 
   def index
-    if params[:order]
-      @recipes = Recipe.send("#{params[:order]}")
-    elsif params[:filter]
-      @recipes = current_user.recipes
-    elsif params[:name]
-      @recipes = Recipe.search_by_name(params[:name])
-    elsif params[:ingredient_name]
+    @recipes = Recipe.all
+    case params[:order]
+      when "your_recipes"
+        @recipes = Recipe.your_recipes(current_user.id).recent
+      when "recent"
+        @recipes = Recipe.recent
+      when "alphabetical"
+        @recipes = Recipe.alphabetical
+      when "popular"
+        @recipes = Recipe.popular.recent
+     end
+     if params[:ingredient_name]
       @recipes = Recipe.search_by_ingredient(params[:ingredient_name])
-    else
-      @recipes = Recipe.all
-    end
+      @search_term = params[:ingredient_name]
+     elsif params[:name]
+      @recipes = Recipe.search_by_name(params[:name])
+      @search_term = params[:name]
+     end
   end
 
   def new
