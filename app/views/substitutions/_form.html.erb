@@ -20,7 +20,8 @@
     <div class="form-group">
     <%= f.label :description, "Details/Description:" %><br>
     <%= f.text_area :description, class: "form-control-lg", rows: "2", style: "height:100%; min-width: 100%" %>
-  </div>
+    </div>
+    <%= f.hidden_field :recipe_id, value: recipe.id %>
     <%= f.submit submit, class: "btn btn-success btn-lg" %>
 <% end %>
 

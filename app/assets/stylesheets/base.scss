@@ -115,7 +115,7 @@ hr.style {
 
  .notes_b {
    vertical-align: top;
-   background-color :#D1F4ED;
+   background-color :rgba(209, 244, 237, .85);
    display: inline-block;
    padding: 20px;
    margin: 10px;
@@ -128,6 +128,13 @@ hr.style {
   padding: 0px;
   border: 1px solid #dedede;
 }
+
+.list_b {
+ list-style: square inside;
+ color: #474a51;
+ padding: 0px;
+}
+
 .list li {
   border-bottom: 1px dotted #ccc;
   height: auto;

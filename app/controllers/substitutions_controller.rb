@@ -24,13 +24,11 @@ class SubstitutionsController < ApplicationController
     end
   end
 
-
-  def index
-
-  end
-
-  def show
-
+  def destroy
+    @recipe = Recipe.find(params[:recipe_id])
+    @substitution.destroy!
+    flash[:primary] = "Substitution Deleted!"
+    redirect_to user_recipe_path(current_user, @recipe)
   end
 
 

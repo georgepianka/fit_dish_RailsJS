@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :recipes, only: %i[show] do
-    resources :substitutions, only: %i[new create]
+    resources :substitutions, only: %i[new create destroy]
   end
 
   post '/like' => 'likes#like'
