@@ -55,6 +55,8 @@ end
 Recipe.first.likes.create([{user_id: 1}, {user_id: 2}, {user_id: 3}])
 Recipe.find(2).likes.create([{user_id: 1}, {user_id: 2}])
 Recipe.find(3).likes.create({user_id: 1})
+Recipe.find(4).likes.create([{user_id: 1}, {user_id: 2}])
+
 Recipe.last.likes.create({user_id: 1})
 
 
