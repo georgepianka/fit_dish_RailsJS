@@ -11,7 +11,6 @@ class SubstitutionsController < ApplicationController
 
 
   def create
-    raise params.inspect
     @substitution = current_user.substitutions.build(substitutions_params)
     if @substitution.save
       @recipe = Recipe.find(params[:recipe_id])
@@ -35,10 +34,6 @@ class SubstitutionsController < ApplicationController
 
   end
 
-
-  def create
-
-  end
 
   private
       def substitutions_params

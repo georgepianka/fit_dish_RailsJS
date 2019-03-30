@@ -3,6 +3,7 @@ class Substitution < ApplicationRecord
   belongs_to :user
   belongs_to :ingredient, optional:true
 
+  validates :recipe_ingredient, presence: true
   validates :quantity, presence: true
   validates :ingredient, presence: true
   validates :description, presence: true
