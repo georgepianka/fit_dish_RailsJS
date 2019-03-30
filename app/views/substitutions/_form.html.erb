@@ -1,23 +1,27 @@
-<%= form_for [recipe, Substitution.new] do |f| %>
-    <%= f.text_field :name %>
-    <%= f.text_area :description %>
-    <%= f.hidden_field :recipe_id, :value => recipe.id %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.submit "Recommend Substitution" %>
-<% end %>
-
-
-
 <div class="info">
-    <%= form_for ingredient do |f| %>
+<%= form_for [recipe, substitution] do |f| %>
+  <div class="form-group">
+    <%= f.label :recipe_ingredient_id, "Select Ingredient:" %><br>
+    <%= f.collection_select :recipe_ingredient_id, recipe_ingredients, :id, proc{|recipe_ingredient| recipe_ingredient.quantity + " of " + recipe_ingredient.ingredient.name}, {}, class: "form-control-lg" %>
+  </div><br>
+  <div class="form-group">
+    <%= f.fields_for :ingredient do |ingredient| %>
+    <%= f.label :name, "Replace With:" %><br>
 
-          <div class="form-group">
-             <%=f.label :name %><br>
-             <%=f.text_field :name, placeholder: "Ingredient Name", class: "form-control-lg" %>
-          </div>
-
-          <%= f.submit submit, class: "btn btn-success btn-lg" %>
-
+          <%= ingredient.text_field :name, list: "ingredients_autocomplete", placeholder: "Ingredient Name", class: "form-control-lg" %>
+            <datalist id="ingredients_autocomplete">
+              <% Ingredient.all.each do |ing| %>
+                <option value="<%= ing.name %>">
+              <% end %>
+            </datalist>
+            <%= f.text_field :quantity, placeholder: "How Much?", class: "form-control-lg" %>
+        </div>
     <% end %>
+    <div class="form-group">
+    <%= f.text_area :description %>
+  </div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.submit submit, class: "btn btn-success btn-lg" %>
+<% end %>
 
 </div>

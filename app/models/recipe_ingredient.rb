@@ -1,6 +1,7 @@
 class RecipeIngredient < ApplicationRecord
   belongs_to :recipe, optional:true
   belongs_to :ingredient, optional:true
+  has_many :substitutions
 
   validates :quantity, presence: true
   validates :ingredient, presence: true

@@ -1,23 +1,36 @@
 class SubstitutionsController < ApplicationController
-    def new
-        @substitution = Substitution.new
-    end
 
-    def index
-        
-    end
+  before_action :require_login
 
-    def show
+  def new
+      @substitution = Substitution.new
+      @substitution.build_ingredient
+      @recipe = Recipe.find(params[:recipe_id])
+      @recipe_ingredients = @recipe.recipe_ingredients
 
-    end
+  end
 
 
-    def create
+  def create
 
-    end
+  end
 
-    private
-        def substitutions_params
-            params.require(:substitution).permit(:user_id, :recipe_id, :name, :description)
-        end
+  def index
+
+  end
+
+  def show
+
+  end
+
+
+  def create
+
+  end
+
+  private
+      def substitutions_params
+          params.require(:substitution).permit(:user_id, :recipe_ingredient_id, :description, :quantity, ingredient_attributes: [:name])
+      end
+
 end
