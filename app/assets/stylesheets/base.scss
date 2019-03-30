@@ -98,6 +98,10 @@ hr.style {
  /* text */
 
 
+.list-group {
+  margin: 10px;
+}
+
 .list-group-item {
   box-sizing: border-box;
   background: #e0ddd5;
@@ -114,9 +118,8 @@ hr.style {
  }
 
  .notes_b {
-   vertical-align: top;
-   background-color :rgba(209, 244, 237, .85);
    display: inline-block;
+   background-color :rgba(209, 244, 237, .85);
    padding: 20px;
    margin: 10px;
  }
@@ -172,15 +175,6 @@ hr.style {
    filter: invert(50%);
  }
 
- .indent-10 {
-   margin-left: 10px;
- }
-
- .bottom-text {
-   position: absolute;
-   bottom: 0;
-   width: 100%;
- }
 
  .center {
     text-align: center;

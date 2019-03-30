@@ -1,4 +1,4 @@
-<div class="d-inline-block">
+  <div class="row">
 
   <h1 class=" display-3 text-success font-weight-bold info"><%= @recipe.name %></h1>
   <div id="like_box" class="d-inline">
@@ -23,16 +23,23 @@
     <h4><b> Description <b></h5>
     <h6><%= @recipe.description %></h6>
   </div>
-  <div>
+
+</div>
+
+ <div class="d-inline">
     <div class="notes">
       <ul class="list">
         <h4><b> Ingredients <b></h4><br>
-        <% @recipe.recipe_ingredients.each do |ing| %>
-            <h5><li><i><%= ing.quantity %></i><span class="float-right ml-3"><strong><b><%= ing.ingredient.name %></span></strong></b></li></h5>
-        <% end %>
+        <table class="table">
+          <% @recipe.recipe_ingredients.each do |ing| %>
+              <tr><td><h5><i><li><%= ing.quantity %></i></h5></td>
+                <td><h5><strong><b><%= ing.ingredient.name %></strong></li></b></td></h5></tr>
+          <% end %>
+      </table>
       </ul>
     </div>
-    <div class="notes_b ml-5">
+
+     <div class="notes_b">
       <ul class="list_b">
         <h4><b>Ingredient Substitutions: <b></h4><br>
           <% if @recipe.substitutions.empty? %>
@@ -41,27 +48,29 @@
             <% @recipe.substitutions.each do |substitution| %>
                 <div class="border border-muted p-2 mb-3">
                 <h5><b> Recommendation:</b></h5>
-                <h5><li><i><%= substitution.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.ingredient.name %></span></strong></b></li></h5>
+                <h5><li><i><%= substitution.quantity %></i><span class="ml-5"><strong><b><%= substitution.ingredient.name %></span></strong></b></li></h5>
                 <h5><b> Instead Of:</b></h5>
-                <h5><li><i><%= substitution.recipe_ingredient.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></strong></b></li></h5></li>
+                <h5><li><i><%= substitution.recipe_ingredient.quantity %></i><span class="ml-5"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></strong></b></li></h5></li>
                 <h5><b> Details:</b></h5>
                 <h5><%= substitution.description %>
                   <% if substitution.user == current_user %>
-                    <%= link_to "Delete Substitution", recipe_substitution_path(@recipe, substitution), class: "btn btn-dark border btn-sm border-muted ml-3 float-right", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to "Delete", recipe_substitution_path(@recipe, substitution), class: "btn btn-dark border btn-sm border-muted ml-3 float-right", method: :delete, data: { confirm: 'Are you sure?' } %>
                   <% end %>
                 </h5>
               </div>
             <% end %>
           <% end %>
       </ul>
-    </div>
-  </div>
+ </div>
 
-  <ul class="list-group m-2">
+</div>
+
+ <div class="row">
+  <ul class="list-group my-2">
         <li class="list-group-item p-3">
-        <h4><b> Instructions <b></h4>
-        <%= @recipe.instructions %>
+        <h4><b> Instructions </b></h4>
+        <h6><%= @recipe.instructions %></h6>
         </li>
   </ul>
 
-</div>
+ </div>
