@@ -12,7 +12,7 @@ class DishesController < ApplicationController
         flash[:primary] = "Added Dish to Your Dishes!"
         redirect_to user_dishes_path(current_user)
       else
-        @recipe = Recipe.find(params[:recipe_id])
+        find_recipe_by_id
         flash[:danger] = "Added Dish to Your Dishes!"
         redirect_to user_recipe_path(current_user, @recipe)
       end

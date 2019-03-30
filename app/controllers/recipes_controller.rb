@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :require_login
   before_action :authorized?
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :find_recipe_by_id, only: [:show, :edit, :update, :destroy]
 
   def show
   end
@@ -66,10 +66,6 @@ class RecipesController < ApplicationController
   end
 
   private
-
-      def set_recipe
-        @recipe = Recipe.find(params[:id])
-      end
 
       def recipe_params
         params.require(:recipe).permit(:name, :description, :instructions,

@@ -22,9 +22,13 @@ class ApplicationController < ActionController::Base
         params[:user_id] ? @user = User.find(params[:user_id]) : @user = User.find(params[:id])
       end
 
+      def find_recipe_by_id
+        params[:recipe_id] ? @recipe = Recipe.find(params[:recipe_id]) : @recipe = Recipe.find(params[:id])
+      end
+
       def authorized?
         if find_user_by_id != current_user
-          flash[:danger] = "You can only view your own profile page!"
+          flash[:danger] = "You can only view your own Profile/Dishes/Grocery List!"
           redirect_to user_path(current_user)
         end
       end

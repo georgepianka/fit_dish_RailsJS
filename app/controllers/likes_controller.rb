@@ -2,7 +2,7 @@ class LikesController < ApplicationController
 
 def like
     @user = current_user
-    @recipe = Recipe.find(params[:recipe_id])
+    find_recipe_by_id
     @like = @user.like(@recipe)
 
 end
@@ -10,7 +10,7 @@ end
 def unlike
   @user = current_user
   @like = @user.likes.find_by_recipe_id(params[:recipe_id])
-  @recipe = Recipe.find(params[:recipe_id])
+  find_recipe_by_id
   @like.destroy!
 
 end

@@ -25,9 +25,10 @@ class SubstitutionsController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:recipe_id])
+    @substitution = Substitution.find(params[:id])
     @substitution.destroy!
     flash[:primary] = "Substitution Deleted!"
+    @recipe = Recipe.find(params[:recipe_id])
     redirect_to user_recipe_path(current_user, @recipe)
   end
 

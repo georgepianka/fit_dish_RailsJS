@@ -25,6 +25,9 @@ mark = User.create(
 
 george.recipes.create({"name"=>"Smores", "description"=>"Delicious Fireside Treat", "instructions"=>"Squish Chocolate and Marshmallow Between Graham Crackers and Stick in Fire.", "recipe_ingredients_attributes"=>{"0"=>{"ingredient_attributes"=>{"name"=>"Chocolate"}, "quantity"=>"1 Piece"}, "1"=>{"ingredient_attributes"=>{"name"=>"Marshmallow"}, "quantity"=>"2 Pieces"}, "2"=>{"ingredient_attributes"=>{"name"=>"Graham Cracker"}, "quantity"=>"2 Pieces"}}})
 
+george.substitutions.create({"recipe_id"=>"1", "recipe_ingredient_id"=>"1", "description"=>"Why the heck not?", "quantity"=>"A heaping dollop", "ingredient_attributes"=>{"name"=>"Nutella"}})
+
+
 50. times do
     george.recipes.create({
         "name"=>Faker::Food.dish, "description"=>Faker::Food.description, "instructions"=>Faker::Lorem.paragraph(16), "recipe_ingredients_attributes"=>{
