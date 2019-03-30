@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_30_024157) do
+ActiveRecord::Schema.define(version: 2019_03_30_055025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,7 +65,9 @@ ActiveRecord::Schema.define(version: 2019_03_30_024157) do
     t.string "quantity"
     t.bigint "recipe_ingredient_id"
     t.bigint "ingredient_id"
+    t.bigint "recipe_id"
     t.index ["ingredient_id"], name: "index_substitutions_on_ingredient_id"
+    t.index ["recipe_id"], name: "index_substitutions_on_recipe_id"
     t.index ["recipe_ingredient_id"], name: "index_substitutions_on_recipe_ingredient_id"
     t.index ["user_id"], name: "index_substitutions_on_user_id"
   end
@@ -87,5 +89,6 @@ ActiveRecord::Schema.define(version: 2019_03_30_024157) do
   add_foreign_key "recipes", "users"
   add_foreign_key "substitutions", "ingredients"
   add_foreign_key "substitutions", "recipe_ingredients"
+  add_foreign_key "substitutions", "recipes"
   add_foreign_key "substitutions", "users"
 end

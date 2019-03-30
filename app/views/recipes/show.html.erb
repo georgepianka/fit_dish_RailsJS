@@ -32,6 +32,18 @@
         <% end %>
       </ul>
     </div>
+    <div class="notes_b">
+      <ul class="list">
+        <h4><b> Recommended Substitutions <b></h4><br>
+          <% if @recipe.substitutions.empty? %>
+            <h6><li> No One has Recommended Any Substitutions Yet! </li></h6>
+          <% else %>
+            <% @substitutions.each do |substitution| %>
+                <h5><li><i><%= substitution.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.ingredient.name %></span></strong></b></li></h5>
+            <% end %>
+          <% end %>
+      </ul>
+    </div>
   </div>
 
   <ul class="list-group m-2">

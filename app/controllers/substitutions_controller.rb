@@ -13,9 +13,8 @@ class SubstitutionsController < ApplicationController
   def create
     @substitution = current_user.substitutions.build(substitutions_params)
     if @substitution.save
-      @recipe = Recipe.find(params[:recipe_id])
       flash[:primary] = "Added Substitution!"
-      redirect_to user_recipe_path(current_user, @recipe)
+      redirect_to user_recipe_path(current_user, @substitution.recipe)
     else
       flash.now[:danger] = "Failed to Add Substitution!"
       @substitution.build_ingredient
@@ -37,7 +36,7 @@ class SubstitutionsController < ApplicationController
 
   private
       def substitutions_params
-          params.require(:substitution).permit(:recipe_ingredient_id, :description, :quantity, ingredient_attributes: [:name])
+          params.require(:substitution).permit(:recipe_id, :recipe_ingredient_id, :description, :quantity, ingredient_attributes: [:name])
       end
 
 end
