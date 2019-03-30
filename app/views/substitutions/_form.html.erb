@@ -3,7 +3,7 @@
   <div class="form-group">
     <%= f.label :recipe_ingredient_id, "Select Ingredient:" %><br>
     <%= f.collection_select :recipe_ingredient_id, recipe_ingredients, :id, proc{|recipe_ingredient| recipe_ingredient.quantity + " of " + recipe_ingredient.ingredient.name}, {}, class: "form-control-lg" %>
-  </div><br>
+  </div>
   <div class="form-group">
     <%= f.fields_for :ingredient do |ingredient| %>
     <%= f.label :name, "Replace With:" %><br>
@@ -15,10 +15,11 @@
               <% end %>
             </datalist>
             <%= f.text_field :quantity, placeholder: "How Much?", class: "form-control-lg" %>
-        </div>
+        </div><br>
     <% end %>
     <div class="form-group">
-    <%= f.text_area :description %>
+    <%= f.label :description, "Details/Description:" %><br>
+    <%= f.text_area :description, class: "form-control-lg", rows: "2", style: "height:100%; min-width: 100%" %>
   </div>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.submit submit, class: "btn btn-success btn-lg" %>
