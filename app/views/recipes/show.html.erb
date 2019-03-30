@@ -14,7 +14,7 @@
     <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe), class: "btn btn-secondary btn-md border border-muted ml-3 align-middle"%>
     <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), class: "btn btn-dark border btn-md border-muted ml-3 align-middle", method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-    <%= link_to 'Recommend Substitution', new_recipe_substitution_path(@recipe, @substitution = Substitution.new ), class: "btn btn-light btn-md border border-primary ml-3 align-middle" %>
+    <%= link_to 'Recommend Substitution', new_recipe_substitution_path(@recipe, @substitution = Substitution.new ), class: "btn btn-light btn-md border border-muted ml-3 align-middle" %>
     <%= link_to 'Back to Recipes Index', user_recipes_path(current_user), class: "btn btn-success btn-md border border-muted ml-3 align-middle" %>
    </div>
   </div>
