@@ -5,7 +5,7 @@ class SubstitutionsController < ApplicationController
   def new
       @substitution = Substitution.new
       @substitution.build_ingredient
-      @recipe = Recipe.find(params[:recipe_id])
+      find_recipe_by_id
       @recipe_ingredients = @recipe.recipe_ingredients
   end
 
@@ -18,7 +18,7 @@ class SubstitutionsController < ApplicationController
     else
       flash.now[:danger] = "Failed to Add Substitution!"
       @substitution.build_ingredient
-      @recipe = Recipe.find(params[:recipe_id])
+      find_recipe_by_id
       @recipe_ingredients = @recipe.recipe_ingredients
       render :new
     end
@@ -28,7 +28,7 @@ class SubstitutionsController < ApplicationController
     @substitution = Substitution.find(params[:id])
     @substitution.destroy!
     flash[:primary] = "Substitution Deleted!"
-    @recipe = Recipe.find(params[:recipe_id])
+    find_recipe_by_id
     redirect_to user_recipe_path(current_user, @recipe)
   end
 

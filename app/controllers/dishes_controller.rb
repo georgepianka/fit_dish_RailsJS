@@ -18,12 +18,17 @@ class DishesController < ApplicationController
       end
     end
 
-      def destroy
-          @dish = Dish.find(params[:id])
-          @dish.destroy
-          flash[:primary] = "Dish Removed!"
-          redirect_to user_dishes_path(current_user)
+    def destroy
+      @dish = Dish.find(params[:id])
+      if @dish.user_id == current_user.id
+        @dish.destroy
+        flash[:primary] = "Dish Removed!"
+        redirect_to user_dishes_path(current_user)
+      else
+        flash[:danger] = "You can only Delete Your Own Dish!"
+        redirect_to user_path(current_user)
       end
+    end
 
       private
 

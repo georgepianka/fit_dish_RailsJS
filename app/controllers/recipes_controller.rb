@@ -49,20 +49,30 @@ class RecipesController < ApplicationController
   end
 
   def update
-    if @recipe.update(recipe_params)
-      flash[:primary] = "Recipe Info Updated!"
-      redirect_to user_recipe_path(current_user, @recipe)
+    if @recipe.user_id == current_user.id
+      if @recipe.update(recipe_params)
+        flash[:primary] = "Recipe Info Updated!"
+        redirect_to user_recipe_path(current_user, @recipe)
+      else
+        flash.now[:danger] = "Failed to Update Recipe!"
+        4.times { @recipe.recipe_ingredients.build.build_ingredient }
+        render :edit
+      end
     else
-      flash.now[:danger] = "Failed to Update Recipe!"
-      4.times { @recipe.recipe_ingredients.build.build_ingredient }
-      render :edit
+      flash[:danger] = "You can only Edit Your Own Recipe!"
+      redirect_to user_path(current_user)
     end
   end
 
   def destroy
-    @recipe.destroy!
-    flash[:primary] = "Recipe Deleted!"
-    redirect_to user_recipes_path(current_user)
+    if @recipe.user_id == current_user.id
+      @recipe.destroy!
+      flash[:primary] = "Recipe Deleted!"
+      redirect_to user_recipes_path(current_user)
+    else
+      flash[:danger] = "You can only Delete Your Own Recipe!"
+      redirect_to user_path(current_user)
+    end
   end
 
   private
