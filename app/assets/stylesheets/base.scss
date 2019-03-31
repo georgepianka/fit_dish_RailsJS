@@ -103,7 +103,6 @@ hr.style {
 }
 
 .list-group-item {
-  box-sizing: border-box;
   background: #e0ddd5;
   color: #171e42;
   padding-top: 1px;
@@ -132,12 +131,6 @@ hr.style {
   border: 1px solid #dedede;
 }
 
-.list_b {
- list-style: square inside;
- color: #474a51;
- padding: 0px;
-}
-
 .list li {
   border-bottom: 1px dotted #ccc;
   height: auto;
@@ -145,6 +138,24 @@ hr.style {
   text-transform: capitalize;
 }
 .list li:hover {
+  background-color: rgba(0, 0, 0, .1);
+  -webkit-transition: all 0.2s;
+  -moz-transition:    all 0.2s;
+  -ms-transition:     all 0.2s;
+  -o-transition:      all 0.2s;
+}
+
+.list_b {
+ list-style: disc inside;
+ color: #474a51;
+ padding: 0px;
+}
+
+.list_b li {
+  height: auto;
+  text-transform: capitalize;
+}
+.list_b li:hover {
   background-color: rgba(0, 0, 0, .1);
   -webkit-transition: all 0.2s;
   -moz-transition:    all 0.2s;
