@@ -56,7 +56,7 @@
                   <td><h5><i><li><%= substitution.recipe_ingredient.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></li></strong></b></td></h5>
                   <td>
                     <% if substitution.user == current_user %>
-                      <%= link_to "Delete", recipe_substitution_path(@recipe, substitution), class: "btn btn-dark border btn-sm border-muted", method: :delete, data: { confirm: 'Are you sure?' } %>
+                      <%= link_to "Delete", recipe_substitution_path(@recipe, substitution), class: "float-right btn btn-dark border btn-sm border-muted", method: :delete, data: { confirm: 'Are you sure?' } %>
                     <% end %>
                   </td>
                 </tr>
