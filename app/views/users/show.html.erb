@@ -6,24 +6,73 @@
 
     <%= link_to "Update Profile", edit_user_path(@user), class: "btn btn-success btn-md border border-muted ml-3 mb-3 align-middle" %>
 
-  <div>
-    <h1 class=" display-3 text-success font-weight-bold info">Grocery List</h1>
 
-        <% if @user.dishes.empty? %>
-          <h3>You have not added any Dishes Yet!</h3>
-        <% else %>
-        <div>
-          <div class="notes">
-            <ul class="list">
-              <% @user.dishes.each do |dish| %>
-               <h4 class="mt-4"><b> <%= dish.recipe.name %> <b></h4><br>
+    <div>
+      <h1 class="display-3 text-success font-weight-bold info">Grocery List</h1>
+    </div>
+    <div>
+      <% if @user.dishes.empty? %>
+        <h3>You have not added any Dishes Yet!</h3>
+      <% else %>
+
+        <div class="notes align-top">
+          <ul class="list">
+            <% @user.dishes.each do |dish| %>
+              <h4><b> <%= dish.recipe.name %> <b></h4><br>
+              <table class="table">
                 <% dish.recipe.recipe_ingredients.each do |ing| %>
-                  <h5><li><i><%= ing.quantity %></i><span class="float-right ml-3"><strong><b><%= ing.ingredient.name %></span></strong></b></li></h5>
+                    <tr><td><h5><i><li><%= ing.quantity %></i><span class="float-right ml-3"><strong><b><%= ing.ingredient.name %></span></li></strong></b></td></h5></tr>
                 <% end %>
-              <% end %>
-            </ul>
-          </div>
+            </table>
+           <% end %>
+          </ul>
         </div>
-        <% end %>
 
-      </div>
+        <div>
+          <h1 class="text-success font-weight-bold info">Recommended Ingredient Substitutions:</h1>
+          <div class="notes_b align-top">
+            <ul class="list_b">
+
+               <% @user.dishes.each do |dish| %>
+                 <h2 class="my-4 p-2 bg-white d-inline-block border border-dark"><b> <%= dish.recipe.name %></b></u></h2>
+
+                  <% if dish.recipe.substitutions.empty? %>
+                    <h6><li> No One has Recommended Any Substitutions Yet! </li></h6>
+                  <% else %>
+
+                   <table class="table table-bordered table-sm">
+                     <tbody>
+                       <% dish.recipe.substitutions.each do |substitution| %>
+                         <tr>
+                           <td><h5><i><li><%= substitution.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.ingredient.name %></span></li></strong></b></td></h5>
+                           <td>
+                             <h6>
+                               <div class="center"><i class="fas fa-exchange-alt"></i></div>
+                               <div class="center"> &nbsp; Replacing &nbsp; </div>
+                             </h6>
+                         </td>
+                           <td><h5><i><li><%= substitution.recipe_ingredient.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></li></strong></b></td></h5>
+                           <td>
+                             <% if substitution.user == current_user %>
+                               <%= link_to "Delete", recipe_substitution_path(dish.recipe, substitution), class: "float-right btn btn-dark border btn-sm border-muted", method: :delete, data: { confirm: 'Are you sure?' } %>
+                             <% end %>
+                           </td>
+                         </tr>
+                         <tr>
+                           <td colspan="4"><h6><b>Description: </b></h6>
+                             <h6><%= substitution.description %></h6>
+                           </td>
+                         </tr>
+                         <tr><td class="bg-dark p-1" colspan="4"></td></tr>
+                       <% end %>
+                     </tbody>
+                 </table>
+               <% end %>
+            <% end %>
+           </ul>
+       </div>
+     </div>
+
+     <% end %>
+
+    </div>
