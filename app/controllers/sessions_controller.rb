@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
 
   def new
+    if logged_in?
+      flash[:info] = "You Are Still Logged In!"
+      redirect_to user_path(current_user)
+    end
   end
 
   def create
