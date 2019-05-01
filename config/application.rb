@@ -28,6 +28,8 @@ module FitDish
 
     # Facebook automatically allows http://localhost REDIRECTS in Development Mode
 
+    #So...
+
     # With HTTP, Site URL must be localhost:3000, not 0.0.0.0:3000
     # http://localhost:3000/
 
@@ -40,6 +42,7 @@ module FitDish
     #Valid OAuth Redirect URIs
     # https://0.0.0.0:3000/auth/facebook/callback
     # https://localhost:3000/auth/facebook/callback
+    # https://evening-cliffs-19162.herokuapp.com/auth/facebook/callback
 
     # bundle exec thin start --ssl
 
