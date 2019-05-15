@@ -16,7 +16,9 @@
       <%= render 'layouts/navbar' if logged_in? %>
 
         <% flash.each do |key, value| %>
-          <div class="center alert alert-<%= key %>"><%= value %></div>
+          <div class="center alert alert-<%= key %>"><%= value %>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          </div>
         <% end %>
 
       <div class="container text-left text-light align-middle">
