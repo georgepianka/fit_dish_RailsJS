@@ -35,6 +35,9 @@
       </table>
       </ul>
     </div>
+    
+    <div id="new-substitution-form">
+    </div>
 
      <div class="notes_b align-top">
       <ul class="list_b">
@@ -53,10 +56,10 @@
                       <div class="center"> &nbsp; Replacing &nbsp; </div>
                     </h6>
                 </td>
-                  <td><h5><i><li><%= substitution.recipe_ingredient.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></li></strong></b></td></h5>
+                  <td><h5 class="replaced-ingredient"><i><%= substitution.recipe_ingredient.quantity %></i><span class="float-right ml-2"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></strong></b></td></h5>
                   <td>
                     <% if substitution.user == current_user %>
-                      <%= link_to "Delete", recipe_substitution_path(@recipe, substitution), class: "float-right btn btn-dark border btn-sm border-muted", method: :delete, data: { confirm: 'Are you sure?' } %>
+                      <h5 class="replaced-ingredient"><%= link_to "Delete", recipe_substitution_path(@recipe, substitution), class: "float-right m-auto btn btn-dark border btn-sm border-muted", method: :delete, data: { confirm: 'Are you sure?' } %></h5>
                     <% end %>
                   </td>
                 </tr>
@@ -70,7 +73,7 @@
             </tbody>
         </table>
       <% end %>
-      </ul>
+    </ul>
   </div>
 
 </div>

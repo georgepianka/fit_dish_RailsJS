@@ -22,3 +22,5 @@ Substitution.ready = function() {
 $(document).on('turbolinks:load', function() {
   Substitution.ready();
 })
+
+*/

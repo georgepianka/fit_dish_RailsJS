@@ -146,14 +146,25 @@ hr.style {
 }
 
 .list_b {
- list-style: disc inside;
+ list-style: decimal outside;
  color: #474a51;
  padding: 0px;
 }
 
 .list_b li {
+  font-weight: bold;
+  margin-left: 1em;
   height: auto;
-  padding: 5px 5px;
+  padding: 10px 10px 0px 10px;
+  text-transform: capitalize;
+}
+
+.list_b li > * {
+  font-weight: normal;
+}
+.list_b h5.replaced-ingredient {
+  height: auto;
+  padding: 10px 10px 0px 10px;
   text-transform: capitalize;
 }
 .list_b li:hover {
