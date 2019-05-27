@@ -4,7 +4,7 @@ Rails.application.configure do
   #RAILS_ENV=development bundle exec rake assets:precompile
 
 
-  config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   config.assets.css_compressor = :sass
   config.assets.compile = true
   config.assets.digest = true
