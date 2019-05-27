@@ -1,6 +1,12 @@
 class SubstitutionsController < ApplicationController
 
   before_action :require_login
+  before_action :find_recipe_by_id, only: [:index]
+
+
+  def index
+     render json: @recipe.substitutions, status: 200
+  end
 
   def new
       @substitution = Substitution.new
