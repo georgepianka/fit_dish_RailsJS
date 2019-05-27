@@ -16,11 +16,11 @@
            <%=f.text_area :instructions, placeholder: "Instructions", class: "form-control-lg", rows: "6", style: "height:100%; min-width: 100%" %>
         </div>
 
-        <table>
+        <table style="width:100%">
           <thead>
             <tr>
               <th>Ingredient:</th>
-              <th>Quantity:</th>
+              <th >Quantity:</th>
             </tr>
           </thead>
           <tbody>
@@ -29,9 +29,9 @@
             <% end %>
           </tbody>
         </table><br>
-        <% if false %>
-        <%= button_add_row( class: 'btn btn-primary btn-lg') %>
-        <% end %>
+
+        <%= button_add_row('Add Ingredient', f, :recipe_ingredients, nested_association = :ingredient, class: 'btn btn-primary btn-lg') %>
+
         <%= f.submit submit, class: 'btn btn-success btn-lg' %>
 
     <% end %>
