@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    4.times { @recipe.recipe_ingredients.build.build_ingredient }
+    
   end
 
   def update

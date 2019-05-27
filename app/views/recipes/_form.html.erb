@@ -1,5 +1,5 @@
 <div class="info">
-    <%= form_for [current_user, recipe] do |f| %>
+    <%= form_for [current_user, recipe], :html=> {:id => 'recipe_form'} do |f| %>
 
         <div class="form-row">
           <div class="form-group col-md-6">
@@ -23,7 +23,7 @@
               <th >Quantity:</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="fields">
             <%= f.fields_for :recipe_ingredients do |recipe_ingredient| %>
               <%= render 'recipe_ingredient', f: recipe_ingredient %>
             <% end %>

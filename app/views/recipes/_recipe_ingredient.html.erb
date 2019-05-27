@@ -10,10 +10,14 @@
       </td>
       <td>
         <%= f.text_field :quantity, placeholder: "How Much?", class: "form-control-lg" %>
-        <% if f.object.persisted? %>
-           <%= f.check_box :_destroy %>
-           <%= f.label :_destroy, "Remove" %>
+
+        <% if false%>
+          <% if f.object.persisted? %>
+             <%= f.check_box :_destroy %>
+             <%= f.label :_destroy, "Remove" %>
+          <% end %>
         <% end %>
+
       </td>
       <td>
         <%= f.hidden_field :_destroy %>
