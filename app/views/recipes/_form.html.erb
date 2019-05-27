@@ -25,30 +25,14 @@
           </thead>
           <tbody>
             <%= f.fields_for :recipe_ingredients do |recipe_ingredient| %>
-              <%= recipe_ingredient.fields_for :ingredient do |ingredient| %>
-                <tr>
-                  <div class="form-group">
-                    <td><%= ingredient.text_field :name, list: "ingredients_autocomplete", placeholder: "Ingredient Name", class: "form-control-sm" %>
-                      <datalist id="ingredients_autocomplete">
-                        <% Ingredient.all.each do |ing| %>
-                          <option value="<%= ing.name %>">
-                        <% end %>
-                      </datalist>
-                    </td>
-                    <td>
-                      <%= recipe_ingredient.text_field :quantity, placeholder: "How Much?", class: "form-control-sm" %>
-                      <% if recipe_ingredient.object.persisted? %>
-                         <%= recipe_ingredient.check_box :_destroy %>
-                         <%= recipe_ingredient.label :_destroy, "Remove" %>
-                      <% end %>
-                    </td>
-                  </div>
-                </tr>
-              <% end %>
+              <%= render 'recipe_ingredient', f: recipe_ingredient %>
             <% end %>
           </tbody>
         </table><br>
+        <% if false %>
+        <%= button_add_row( class: 'btn btn-primary btn-lg') %>
+        <% end %>
+        <%= f.submit submit, class: 'btn btn-success btn-lg' %>
 
-        <%= f.submit submit, class: "btn btn-success btn-lg" %>
     <% end %>
 </div>

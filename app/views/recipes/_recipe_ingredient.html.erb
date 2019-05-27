@@ -1,0 +1,24 @@
+<%= f.fields_for :ingredient do |ingredient| %>
+  <tr>
+    <div class="form-group">
+      <td><%= ingredient.text_field :name, list: "ingredients_autocomplete", placeholder: "Ingredient Name", class: "form-control-sm" %>
+        <datalist id="ingredients_autocomplete">
+          <% Ingredient.all.each do |ing| %>
+            <option value="<%= ing.name %>">
+          <% end %>
+        </datalist>
+      </td>
+      <td>
+        <%= f.text_field :quantity, placeholder: "How Much?", class: "form-control-sm" %>
+        <% if f.object.persisted? %>
+           <%= f.check_box :_destroy %>
+           <%= f.label :_destroy, "Remove" %>
+        <% end %>
+      </td>
+      <td>
+        <%= f.hidden_field :_destroy %>
+        <%= link_to 'Remove', '#', id: 'remove_ingredient', class: "btn btn-danger btn-sm border border-muted" %>
+      </td>
+    </div>
+  </tr>
+<% end %>
