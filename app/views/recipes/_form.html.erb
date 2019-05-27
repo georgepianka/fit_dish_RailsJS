@@ -28,10 +28,9 @@
               <%= render 'recipe_ingredient', f: recipe_ingredient %>
             <% end %>
           </tbody>
-        </table><br>
+        </table><br></br>
 
-        <%= button_add_row('Add Ingredient', f, :recipe_ingredients, nested_association = :ingredient, class: 'btn btn-primary btn-lg') %>
-
+        <%= button_add_row('Add Ingredient', f, :recipe_ingredients, nested_association = :ingredient, class: 'btn btn-outline-primary btn-sm') %></br></br>
         <%= f.submit submit, class: 'btn btn-success btn-lg' %>
 
     <% end %>
