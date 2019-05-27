@@ -1,6 +1,5 @@
 <div class="info">
     <%= form_for [current_user, recipe], :html=> {:id => 'recipe_form'} do |f| %>
-
         <div class="form-row">
           <div class="form-group col-md-6">
             <%=f.label :name %><br>
@@ -32,6 +31,5 @@
 
         <%= button_add_row('Add Ingredient', f, :recipe_ingredients, nested_association = :ingredient, class: 'btn btn-outline-primary btn-sm') %></br></br></br>
         <%= f.submit submit, class: 'btn btn-success btn-lg' %>
-
     <% end %>
 </div>

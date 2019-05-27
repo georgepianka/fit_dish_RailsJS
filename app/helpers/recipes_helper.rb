@@ -24,7 +24,7 @@ module RecipesHelper
       render(association.to_s.singularize, f: builder)
     end
 
-    link_to(('<i class="fas fa-plus"></i> '+ name).html_safe, '#', id: "add_fields", class: args[:class], data: {id: id, fields_to_add: fields_to_add.gsub("/n", "")})
+    link_to(('<i class="fas fa-plus"></i> &nbsp'+ name).html_safe, '#', id: "add_fields", class: args[:class], data: {id: id, fields_to_add: fields_to_add.gsub("/n", "")})
   end
 
 end
