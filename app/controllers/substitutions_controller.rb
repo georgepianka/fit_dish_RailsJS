@@ -36,11 +36,18 @@ class SubstitutionsController < ApplicationController
   end
 
   def destroy
-    @substitution = Substitution.find(params[:id])
-    @substitution.destroy!
-    flash[:primary] = "Substitution Deleted!"
     find_recipe_by_id
-    redirect_to user_recipe_path(current_user, @recipe)
+    @substitution = Substitution.find(params[:id])
+    if @substitution.user_id == current_user.id
+      @substitution.destroy!
+      flash[:primary] = "Substitution Deleted!"
+      find_recipe_by_id
+      redirect_to user_recipe_path(current_user, @recipe)
+    else
+      flash[:danger] = "You can only Delete Your Own Recommended Substitutions!"
+      redirect_to user_path(current_user)
+    end
+
   end
 
 
