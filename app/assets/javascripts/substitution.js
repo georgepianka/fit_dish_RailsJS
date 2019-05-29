@@ -1,32 +1,65 @@
 class Substitution {
+
  constructor(obj) {
  }
 }
 
-Substitution.getSubstitutionForm = () =>{
-  $('#recommend-substitution').click(function (e) {
-    e.preventDefault();
-    const url = this.href
-    console.log(url);
-    $.getJSON(url, response => {
-      console.log(response.form_data);
-      Substitution.displayForm(response.form_data);
-      Substitution.displayErrors(response.show_errors);
+
+  Substitution.getSubstitutionForm = () => {
+    $('#recommend-substitution').click(function (e) {
+      e.preventDefault();
+      const url = this.href
+      console.log(url);
+      $.getJSON(url, response => {
+        console.log(response.form_data);
+        Substitution.displaySubstitutionForm(response.form_data);
+      });
+    })
+  }
+
+  Substitution.displaySubstitutionForm = formData => {
+    Substitution.formHTML = formData;
+    $("#new-substitution-form").html(formData);
+    Substitution.newSubstitution();
+  }
+
+  Substitution.newSubstitution = () => {
+    $("div#new-substitution-form form").on('submit', function(e) {
+      e.preventDefault();
+      let formData = $(this).serialize();
+      console.log(this.attributes.action.value)
+      let action = this.attributes.action.value
+
+      $.ajax({
+         url: action,
+         type: 'POST',
+         data: formData,
+         dataType: 'json',
+         success: (data) => Substitution.updateSubstitutions(data),
+         error: (xhr) => Substitution.displayErrors(xhr.responseJSON.show_errors)
+      });
     });
-  })
-}
+  }
 
-Substitution.displayForm = form_data => {
-  $("#new-substitution-form").html(form_data);
-}
+  Substitution.updateSubstitutions = data => {
+    $("div#new-substitution-form").html(JSON.stringify(data));
+    console.log(data)
+  }
 
-Substitution.displayErrors = show_errors => {
-  $("#new-substitution-form").prepend(show_errors);
-}
+  Substitution.displayErrors = show_errors => {
+    console.log(show_errors)
+    const errorMessages = `<div id="error-messages" class="text-center text-danger m-2"> <h4>Please Try Again!</h4> ${show_errors} </div>`;
+    $("div#new-substitution-form").children("#error-messages").empty();
+    $("div#new-substitution-form").prepend(errorMessages);
+    $('form input[value="Recommend Substitution!"]').prop("disabled", false);
 
-Substitution.ready = function() {
-  this.getSubstitutionForm()
-}
+  }
+
+
+  Substitution.ready = function() {
+    this.getSubstitutionForm()
+  }
+
 
 $(document).on('turbolinks:load', function() {
   Substitution.ready();
@@ -43,16 +76,7 @@ function displayTrip(response) {
 
 
 
-function newTripSubmit(formData) {
-  $.ajax({
-     url: "/trips",
-     type: 'POST',
-     data: formData,
-     dataType: 'json',
-     success: (data) => updatePage(data),
-     error: (xhr) => newForm(xhr)
-  });
-}
+
 
 function newForm(response){
   console.log(response.responseJSON.error)

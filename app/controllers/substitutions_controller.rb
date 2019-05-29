@@ -21,7 +21,7 @@ class SubstitutionsController < ApplicationController
       flash[:primary] = "Added Substitution!"
       respond_to do |f|
 				f.html {redirect_to user_recipe_path(current_user, @substitution.recipe)}
-				f.json {render json: {show_errors: render_to_string(partial: 'layouts/show_errors.html.erb', locals: {model: @substitution})}, status: 201}
+				f.json {render json: @substitution, status: 201}
       end
     else
       flash.now[:danger] = "Failed to Add Substitution!"
@@ -30,11 +30,10 @@ class SubstitutionsController < ApplicationController
       @recipe_ingredients = @recipe.recipe_ingredients
       respond_to do |f|
 				f.html {render :new}
-				f.json {render json: @substitution.errors.full_messages, status: 400}
+				f.json {render json: {show_errors: render_to_string(partial: 'layouts/show_errors.html.erb', locals: {model: @substitution})}, status: 400}
       end
     end
   end
-  render json: {response: 'invalid comment params'}, status: 400
 
   def destroy
     @substitution = Substitution.find(params[:id])
