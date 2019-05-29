@@ -29,7 +29,7 @@
           </tbody>
         </table><br>
 
-        <%= button_add_row('Add Ingredient', f, :recipe_ingredients, nested_association = :ingredient, class: 'btn btn-outline-primary btn-sm') %></br></br></br>
+        <%= button_add_row('<span>Add Ingredient</span>', f, :recipe_ingredients, nested_association = :ingredient, class: 'btn btn-outline-primary btn-sm font-weight-bold') %></br></br></br>
         <%= f.submit submit, class: 'btn btn-success btn-lg' %>
     <% end %>
 </div>

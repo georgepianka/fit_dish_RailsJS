@@ -38,13 +38,12 @@ class RecipesController < ApplicationController
       redirect_to user_recipe_path(current_user, @recipe)
     else
       flash.now[:danger] = "Failed to Create Recipe!"
-    12.times { @recipe.recipe_ingredients.build.build_ingredient }
       render :new
     end
   end
 
   def edit
-    
+
   end
 
   def update

@@ -17,6 +17,10 @@
 
 &#10003; At least one of the JS Model Objects must have a method on the prototype. * [Dish Model Object has buildDisplayCard () prototype method via ES6 class syntax]*
 
+`+`
+
+&#10003; DYNAMIC RECIPE FORM (Add or Remove Nested Fields Recipe_Ingredient & Ingredient) *(Built from Scratch / Not Just Cocoon)*
+
 ## Project Repo Specs:
  ### Read Me file contains:
 

@@ -25,6 +25,16 @@
 </div>
 
 <div>
+  <ul class="list-group d-inline-block align-bottom my-2">
+        <li class="list-group-item p-3">
+        <h4><b> Instructions </b></h4>
+        <h6><%= @recipe.instructions %></h6>
+        </li>
+  </ul>
+
+</div>
+
+<div>
     <div class="notes align-top">
       <ul class="list">
         <h4><b> Ingredients <b></h4><br>
@@ -35,13 +45,15 @@
       </table>
       </ul>
     </div>
-    
-    <div id="new-substitution-form">
+
+    <div id="new-substitution-form" class="d-inline">
     </div>
 
      <div class="notes_b align-top">
       <ul class="list_b">
-        <h4><b>Ingredient Substitutions <b></h4><br>
+        <span><h4><b>Ingredient Substitutions<b>
+          <%= link_to(('<span><i class="fas fa-comment-medical"></i> &nbsp' + 'Recommend Substitution</span>').html_safe, '#', class: 'btn btn-outline-dark btn-md font-weight-bold float-right') %></span></h4><br>
+
           <% if @recipe.substitutions.empty? %>
             <h6><li> No One has Recommended Any Substitutions Yet! </li></h6>
           <% else %>
@@ -75,15 +87,5 @@
       <% end %>
     </ul>
   </div>
-
-</div>
-
-<div>
-  <ul class="list-group d-inline-block align-bottom my-2">
-        <li class="list-group-item p-3">
-        <h4><b> Instructions </b></h4>
-        <h6><%= @recipe.instructions %></h6>
-        </li>
-  </ul>
 
 </div>
