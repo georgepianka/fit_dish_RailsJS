@@ -1,23 +1,35 @@
-function getSubstitutionForm() {
+class Substitution {
+ constructor(obj) {
+ }
+}
+
+Substitution.getSubstitutionForm = () =>{
   $('#recommend-substitution').click(function (e) {
     e.preventDefault();
     const url = this.href
     console.log(url);
     $.getJSON(url, response => {
       console.log(response.form_data);
-      displayForm(response.form_data);
+      Substitution.displayForm(response.form_data);
+      Substitution.displayErrors(response.show_errors);
     });
   })
 }
 
-function displayForm(form) {
-  $("#new-substitution-form").html(form);
-
+Substitution.displayForm = form_data => {
+  $("#new-substitution-form").html(form_data);
 }
 
+Substitution.displayErrors = show_errors => {
+  $("#new-substitution-form").prepend(show_errors);
+}
+
+Substitution.ready = function() {
+  this.getSubstitutionForm()
+}
 
 $(document).on('turbolinks:load', function() {
-  getSubstitutionForm();
+  Substitution.ready();
 })
 
 /*

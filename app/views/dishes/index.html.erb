@@ -58,29 +58,29 @@
                <table class="table table-bordered table-sm">
                  <tbody>
                    <% dish.recipe.substitutions.each do |substitution| %>
-                     <tr>
-                       <td><h5><i><li><%= substitution.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.ingredient.name %></span></li></strong></b></td></h5>
-                       <td>
-                         <h6>
-                           <div class="center"><i class="fas fa-exchange-alt"></i></div>
-                           <div class="center"> &nbsp; Replacing &nbsp; </div>
-                         </h6>
+                   <tr>
+                     <td><h5><i><li><%= substitution.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.ingredient.name %></span></li></strong></b></td></h5>
+                     <td>
+                       <h6>
+                         <div class="center"><i class="fas fa-exchange-alt"></i></div>
+                         <div class="center"> &nbsp; Replacing &nbsp; </div>
+                       </h6>
+                   </td>
+                     <td><h5 class="replaced-ingredient"><i><%= substitution.recipe_ingredient.quantity %></i><span class="float-right ml-2"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></strong></b></td></h5>
+                     <td>
+                       <% if substitution.user == current_user %>
+                         <h5 class="replaced-ingredient"><%= link_to "Delete", recipe_substitution_path(dish.recipe, substitution), class: "float-right m-auto btn btn-dark border btn-sm border-muted", method: :delete, data: { confirm: 'Are you sure?' } %></h5>
+                       <% end %>
                      </td>
-                       <td><h5><i><li><%= substitution.recipe_ingredient.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></li></strong></b></td></h5>
-                       <td>
-                         <% if substitution.user == current_user %>
-                           <%= link_to "Delete", recipe_substitution_path(dish.recipe, substitution), class: "float-right btn btn-dark border btn-sm border-muted", method: :delete, data: { confirm: 'Are you sure?' } %>
-                         <% end %>
-                       </td>
-                     </tr>
-                     <tr>
-                       <td colspan="4"><h6><b>Description: </b></h6>
-                         <h6><%= substitution.description %></h6>
-                       </td>
-                     </tr>
-                     <tr><td class="bg-dark p-1" colspan="4"></td></tr>
-                   <% end %>
-                 </tbody>
+                   </tr>
+                   <tr>
+                     <td colspan="4"><h6><b>Description: </b></h6>
+                       <h6><%= substitution.description %></h6>
+                     </td>
+                   </tr>
+                   <tr><td class="bg-dark p-1" colspan="4"></td></tr>
+                 <% end %>
+               </tbody>
              </table>
            <% end %>
         <% end %>

@@ -10,7 +10,7 @@ class SubstitutionsController < ApplicationController
       @recipe_ingredients = @recipe.recipe_ingredients
       respond_to do |f|
 				f.html {render :new}
-				f.json {render json: {form_data: render_to_string(partial: 'substitutions/form.html.erb', locals: {recipe_ingredients: @recipe_ingredients, recipe: @recipe, substitution: @substitution, submit: "Recommend Substitution!"})}, status: 200}
+				f.json {render json: {form_data: render_to_string(partial: 'substitutions/form.html.erb', locals: {recipe_ingredients: @recipe_ingredients, recipe: @recipe, substitution: @substitution, submit: "Recommend Substitution!"}), show_errors: render_to_string(partial: 'layouts/show_errors.html.erb', locals: {model: @substitution})}, status: 200}
       end
   end
 
@@ -25,6 +25,9 @@ class SubstitutionsController < ApplicationController
       end
     else
       flash.now[:danger] = "Failed to Add Substitution!"
+      find_recipe_by_id
+      @substitution.build_ingredient unless @substitution.ingredient
+      @recipe_ingredients = @recipe.recipe_ingredients
       respond_to do |f|
 				f.html {render :new}
 				f.json {render json: @substitution.errors.full_messages, status: 400}
