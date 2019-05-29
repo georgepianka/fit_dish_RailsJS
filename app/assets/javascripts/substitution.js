@@ -1,11 +1,27 @@
 function getSubstitutionForm() {
-  $('#new-substitution-form').on('click', function (e) {
+  $('#recommend-substitution').click(function (e) {
     e.preventDefault();
-    document.getElementById("container").style.display = "block";
-    document.getElementById("container").style.visibility = "visible";
-    $.get("/trips/new", response => displayForm(response))
+    const url = this.href
+    console.log(url);
+    $.getJSON(url, response => {
+      console.log(response.form_data);
+      displayForm(response.form_data);
+    });
   })
 }
+
+function displayForm(form) {
+  $("#new-substitution-form").html(form);
+
+}
+
+
+$(document).on('turbolinks:load', function() {
+  getSubstitutionForm();
+})
+
+/*
+
 
 function displayTrip(response) {
   const thisTrip = new Trip(response);
@@ -13,16 +29,7 @@ function displayTrip(response) {
   $('div#container').html(html);
 }
 
-function displayForm(form) {
-  $("div#container").html(form);
-  $("form#new_trip").on('submit', function(e) {
-    e.preventDefault();
-    // let formData2 = form.serialize();
-    let formData = $("form#new_trip").serialize()
-    console.log(formData)
-    newTripSubmit(formData);
-  })
-}
+
 
 function newTripSubmit(formData) {
   $.ajax({
@@ -47,7 +54,7 @@ function newForm(response){
 
 
 
-/* class Substitution {
+ class Substitution {
   constructor(obj) {
     this.
 

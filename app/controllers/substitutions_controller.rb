@@ -8,6 +8,10 @@ class SubstitutionsController < ApplicationController
       @substitution.build_ingredient
       find_recipe_by_id
       @recipe_ingredients = @recipe.recipe_ingredients
+      respond_to do |f|
+				f.html {render :new}
+				f.json {render json: {form_data: render_to_string(partial: 'substitutions/form.html.erb', locals: {recipe_ingredients: @recipe_ingredients, recipe: @recipe, substitution: @substitution, submit: "Recommend Substitution!"})}, status: 200}
+      end
   end
 
 
