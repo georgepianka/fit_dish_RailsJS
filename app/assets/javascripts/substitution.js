@@ -68,51 +68,40 @@ $(document).on('turbolinks:load', function() {
 /*
 
 
-function displayTrip(response) {
-  const thisTrip = new Trip(response);
-  const html = thisTrip.tripHTML();
-  $('div#container').html(html);
+function updatePage(response) {
+  $("div#container").html(" ");
+  let thisTrip = new Trip(response);
+  let newTrip = thisTrip.tripHTML();
+  console.log(response)
+  $("div#container").append(newTrip);
 }
 
-
-
-
-
-function newForm(response){
-  console.log(response.responseJSON.error)
-  let errors = response.responseJSON.error
-  for (const message of errors) {
-    $("div#container").prepend(`<p> ${message} </p>`)
-  }
-}
-
-
-
-
-
- class Substitution {
+class  {
   constructor(obj) {
-    this.
-
+    this.id = obj.id;
+    this.name = obj.name;
+    this.length = obj.length;
+    this.transportation = obj.transportation;
+    this.hotel_info = obj.hotel_info;
+    this.packing_list = obj.packing_list;
+    this.attractions = obj.attractions;
+    this.visited  = obj.visited;
+    this.year_visited = obj.year_visited;
   }
 }
 
+.prototype.tripHTML = function () {
+  return (`<h1>Trip Name: ${this.name}</h1>
+  <p>Trip ID: ${this.id}</p>
+  <p>Length: ${this.length}</p>
+  <p>Transportation: ${this.transportation}</p>
+  <p>Packing: ${this.packing_list}</p>
+  <p>Accommodation: ${this.hotel_info}</p>
+  <p>Year Visited: ${this.year_visited}</p>
+  <p>Attractions: ${this.attractions}</p> `)
+  }
 
 
 
-
-
-
-
-Substitution.ready = function() {
-  this.getSubstitutions()
-  this.getSubstitutionForm()
-}
-
-
-
-$(document).on('turbolinks:load', function() {
-  Substitution.ready();
-})
 
 */
