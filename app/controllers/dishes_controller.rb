@@ -6,6 +6,15 @@ class DishesController < ApplicationController
       @dishes = current_user.dishes.order( created_at: :desc)
     end
 
+    def show
+      @dish = Dish.find(params[:id])
+      if @dish.user_id == current_user.id
+        respond_to do |f|
+          f.json {render json: @dish, include: ['recipe.recipe_ingredients.ingredient', 'recipe.substitutions.ingredient', 'recipe.substitutions.recipe_ingredient'], status: 200}
+        end
+      end
+    end
+
     def create
       @dish = current_user.dishes.build(dish_params)
       if @dish.save
