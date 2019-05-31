@@ -14,6 +14,12 @@ class SubstitutionsController < ApplicationController
       end
   end
 
+  def show
+    @substitution = Substitution.find(params[:id])
+      respond_to do |f|
+        f.json {render json: @substitution, include: ['recipe_ingredient.ingredient', 'ingredient'], status: 200}
+      end
+  end
 
   def create
     @substitution = current_user.substitutions.build(substitution_params)
@@ -21,7 +27,7 @@ class SubstitutionsController < ApplicationController
       flash[:primary] = "Added Substitution!"
       respond_to do |f|
 				f.html {redirect_to user_recipe_path(current_user, @substitution.recipe)}
-				f.json {render json: @substitution, status: 201}
+				f.json {render json: @substitution, include: ['recipe_ingredient.ingredient', 'ingredient'], status: 201}
       end
     else
       flash.now[:danger] = "Failed to Add Substitution!"
