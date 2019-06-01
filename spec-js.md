@@ -7,9 +7,9 @@
 
 &#10003; Must translate the JSON responses into Javascript Model Objects using either ES6 class or constructor syntax.
 
-&#10003; Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON Backend. *[Dish Index on User Page]*
+&#10003; Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON Backend. *[Recipe Index on User Dishes Page]*
 
-&#10003; Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend. *[Dish Show with Next on User Page]*
+&#10003; Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend. *[Dish Show on User Dishes Page; Substitution Show Resource Dynamically Appended After Submission to Recipe Show Page]*
 
 &#10003; Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page. *[Dish has-many RecipeIngredients (and Ingredients) serialized in the JSON response]*
 
