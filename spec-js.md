@@ -21,6 +21,8 @@
 
 &#10003; DYNAMIC RECIPE FORM (Add or Remove Nested Fields Recipe_Ingredient & Ingredient) *[Built from Scratch / Not Just Cocoon]*
 
+&#10003; DYNAMIC TOGGLE BUTTON for Ingredient Substitutions (Button Transitions From "Show" to "Hide" While Hiding/Revealing Substitutions Index) *[User Show Page / Grocery List / Home]*
+
 ## Project Repo Specs:
  ### Read Me file contains:
 

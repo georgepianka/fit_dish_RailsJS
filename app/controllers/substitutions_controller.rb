@@ -36,7 +36,7 @@ class SubstitutionsController < ApplicationController
       @recipe_ingredients = @recipe.recipe_ingredients
       respond_to do |f|
 				f.html {render :new}
-				f.json {render json: {show_errors: render_to_string(partial: 'layouts/show_errors.html.erb', locals: {model: @substitution})}, status: 400}
+				f.json {render json: {show_errors: render_to_string(partial: 'layouts/show_errors.html.erb', locals: {model: @substitution})}, status: 422}
       end
     end
   end

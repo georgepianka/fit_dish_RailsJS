@@ -27,8 +27,10 @@
            <% end %>
           </ul>
         </div>
-
         <div>
+        <%= link_to(('<span><i class="fas fa-plus"></i> &nbsp ' + 'Show Recommended Ingredient Substitutions</span>').html_safe, '#', id: "toggle-ingredient-substitutions", class: 'btn btn-dark btn-md font-weight-bold m-3') %>
+      </div>
+        <div id="user-ingredient-substitutions" style="display: none;">
           <h1 class="text-success font-weight-bold info">Recommended Ingredient Substitutions:</h1>
           <div class="notes_b align-top">
             <ul class="list_b">
