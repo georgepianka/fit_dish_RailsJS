@@ -9,6 +9,31 @@ class Substitution {
    this.replacedIngredientQuantity = obj.recipe_ingredient.quantity
  }
 
+ renderSubstitution() {
+   return `
+    <tr>
+     <td><h5><i><li>${this.quantity}</i><span class="float-right ml-3"><strong><b>${this.ingredientName}</span></li></strong></b></td></h5>
+     <td>
+       <h6>
+         <div class="center"><i class="fas fa-exchange-alt"></i></div>
+         <div class="center"> &nbsp; Replacing &nbsp; </div>
+       </h6>
+   </td>
+     <td><h5 class="replaced-ingredient"><i>${this.replacedIngredientQuantity}</i><span class="float-right ml-2"><strong><b>${this.replacedIngredientName}</span></strong></b></td></h5>
+     <td>
+       <h5 class="replaced-ingredient"><a class="float-right m-auto btn btn-dark border btn-sm border-muted" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/recipes/${this.recipeID}/substitutions/${this.id}">Delete</a></h5>
+     </td>
+   </tr>
+   <tr>
+     <td colspan="4"><h6><b>Description: </b></h6>
+       <h6>${this.description}</h6>
+     </td>
+   </tr>
+   <tr><td class="bg-dark p-1" colspan="4"></td>
+   </tr>
+  `
+ }
+
  static getSubstitutionForm() {
      $('#recommend-substitution').click(function (e) {
        e.preventDefault();
@@ -61,8 +86,6 @@ class Substitution {
 
  }
 
-
-
  static ready() {
      this.getSubstitutionForm()
  }
@@ -77,25 +100,7 @@ $(document).on('turbolinks:load', function() {
 
 
 /*
-<tr>
-  <td><h5><i><li><%= substitution.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.ingredient.name %></span></li></strong></b></td></h5>
-  <td>
-    <h6>
-      <div class="center"><i class="fas fa-exchange-alt"></i></div>
-      <div class="center"> &nbsp; Replacing &nbsp; </div>
-    </h6>
-</td>
-  <td><h5 class="replaced-ingredient"><i><%= substitution.recipe_ingredient.quantity %></i><span class="float-right ml-2"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></strong></b></td></h5>
-  <td>
-    <h5 class="replaced-ingredient"><a class="float-right m-auto btn btn-dark border btn-sm border-muted" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/recipes/3/substitutions/3">Delete</a></h5>
-  </td>
-</tr>
-<tr>
-  <td colspan="4"><h6><b>Description: </b></h6>
-    <h6><%= substitution.description %></h6>
-  </td>
-</tr>
-<tr><td class="bg-dark p-1" colspan="4"></td></tr>
+
 
 */
 
