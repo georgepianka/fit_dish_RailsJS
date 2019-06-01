@@ -47,6 +47,29 @@ class Substitution {
 
 
   }
+/*
+  <tr>
+    <td><h5><i></i><li><i>1 Scoop</i><span class="float-right ml-3"><strong><b>Watermelon</b></strong></span></li></h5></td>
+    <td>
+      <h6>
+        <div class="center"><i class="fas fa-exchange-alt"></i></div>
+        <div class="center"> &nbsp; Replacing &nbsp; </div>
+      </h6>
+  </td>
+    <td><h5 class="replaced-ingredient"><i>1/2 teaspoon</i><span class="float-right ml-2"><strong><b>Melon</b></strong></span></h5></td>
+    <td>
+        <h5 class="replaced-ingredient"><a class="float-right m-auto btn btn-dark border btn-sm border-muted" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/recipes/3/substitutions/10">Delete</a></h5>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4"><h6><b>Description: </b></h6>
+      <h6>Refreshing!</h6>
+    </td>
+  </tr>
+  <tr><td class="bg-dark p-1" colspan="4"></td></tr>
+
+*/
+
 
   Substitution.displayErrors = show_errors => {
     console.log(show_errors)
