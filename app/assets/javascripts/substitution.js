@@ -43,7 +43,7 @@ class Substitution {
 
   Substitution.updateSubstitutions = data => {
     $("div#new-substitution-form").html(`<div class="center alert alert-primary m-3">Recommended Substitution Saved!<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>`);
-
+    $("table#recipe_substitutions_table").append(new Substitution(data).renderSubstitution());
 
 
   }

@@ -57,7 +57,7 @@
           <% if @recipe.substitutions.empty? %>
             <h6><li> No One has Recommended Any Substitutions Yet! </li></h6>
           <% else %>
-          <table class="table table-bordered">
+          <table id="recipe_substitutions_table" class="table table-bordered">
             <tbody>
               <% @recipe.substitutions.each do |substitution| %>
                 <tr>
