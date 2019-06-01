@@ -5,7 +5,7 @@ class Substitution {
    this.quantity = obj.quantity
    this.description = obj.description
    this.ingredientName = obj.ingredient.name
-   this.replacedIngredientName = obj.recipe_ingredient.name
+   this.replacedIngredientName = obj.recipe_ingredient.ingredient.name
    this.replacedIngredientQuantity = obj.recipe_ingredient.quantity
  }
 
@@ -81,9 +81,8 @@ class Substitution {
 
  static updateSubstitutions(data) {
      $("div#new-substitution-form").html(`<div class="center alert alert-primary m-3">Recommended Substitution Saved!<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>`);
-     $("table#recipe_substitutions_table").append(new Substitution(data).renderSubstitution());
-
-
+     $("ul.list_b li:first-child").replaceWith('<table id="recipe_substitutions_table" class="table table-bordered"><tbody></tbody></table>');
+     $("table#recipe_substitutions_table tbody").append(new Substitution(data).renderSubstitution());
  }
 
  static ready() {
@@ -95,37 +94,3 @@ class Substitution {
 $(document).on('turbolinks:load', function() {
   Substitution.ready();
 })
-
-
-
-
-/*
-
-
-*/
-
-
-
-
-
-
-
-
-/*
-
-
-.prototype.tripHTML = function () {
-  return (`<h1>Trip Name: ${this.name}</h1>
-  <p>Trip ID: ${this.id}</p>
-  <p>Length: ${this.length}</p>
-  <p>Transportation: ${this.transportation}</p>
-  <p>Packing: ${this.packing_list}</p>
-  <p>Accommodation: ${this.hotel_info}</p>
-  <p>Year Visited: ${this.year_visited}</p>
-  <p>Attractions: ${this.attractions}</p> `)
-  }
-
-
-
-
-*/
