@@ -1,121 +1,113 @@
 class Substitution {
-
  constructor(obj) {
+   this.id = obj.id
+   this.recipeID = obj.recipe.id
+   this.quantity = obj.quantity
+   this.description = obj.description
+   this.ingredientName = obj.ingredient.name
+   this.replacedIngredientName = obj.recipe_ingredient.name
+   this.replacedIngredientQuantity = obj.recipe_ingredient.quantity
  }
+
+ static getSubstitutionForm() {
+     $('#recommend-substitution').click(function (e) {
+       e.preventDefault();
+       const url = this.href
+       console.log(url);
+       $.getJSON(url, response => {
+         console.log(response.form_data);
+         Substitution.displaySubstitutionForm(response.form_data);
+       });
+     })
+ }
+
+ static displaySubstitutionForm(formData) {
+     $("#new-substitution-form").html(formData);
+     this.newSubstitution();
 }
 
+ static newSubstitution() {
+     $("div#new-substitution-form form").on('submit', function(e) {
+       e.preventDefault();
+       let formData = $(this).serialize();
+       console.log(this.attributes.action.value)
+       let action = this.attributes.action.value
 
-  Substitution.getSubstitutionForm = () => {
-    $('#recommend-substitution').click(function (e) {
-      e.preventDefault();
-      const url = this.href
-      console.log(url);
-      $.getJSON(url, response => {
-        console.log(response.form_data);
-        Substitution.displaySubstitutionForm(response.form_data);
-      });
-    })
-  }
+       $.ajax({
+          url: action,
+          type: 'POST',
+          data: formData,
+          dataType: 'json',
+          success: (data) => Substitution.updateSubstitutions(data),
+          error: (xhr) => Substitution.displayErrors(xhr.responseJSON.show_errors)
+       });
+     });
+ }
 
-  Substitution.displaySubstitutionForm = formData => {
-    Substitution.formHTML = formData;
-    $("#new-substitution-form").html(formData);
-    Substitution.newSubstitution();
-  }
+ static displayErrors(show_errors) {
+       console.log(show_errors)
 
-  Substitution.newSubstitution = () => {
-    $("div#new-substitution-form form").on('submit', function(e) {
-      e.preventDefault();
-      let formData = $(this).serialize();
-      console.log(this.attributes.action.value)
-      let action = this.attributes.action.value
+       const errorMessages = `<div id="error-messages" class="text-center text-danger m-2"><div class="center alert alert-danger m-3">Please Try Again!</div>${show_errors}</div>`;
 
-      $.ajax({
-         url: action,
-         type: 'POST',
-         data: formData,
-         dataType: 'json',
-         success: (data) => Substitution.updateSubstitutions(data),
-         error: (xhr) => Substitution.displayErrors(xhr.responseJSON.show_errors)
-      });
-    });
-  }
+       $("div#new-substitution-form").children("#error-messages").remove();
+       $("div#new-substitution-form").prepend(errorMessages);
+       $('form input[value="Recommend Substitution!"]').prop("disabled", false);
+ }
 
-  Substitution.updateSubstitutions = data => {
-    $("div#new-substitution-form").html(`<div class="center alert alert-primary m-3">Recommended Substitution Saved!<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>`);
-    $("table#recipe_substitutions_table").append(new Substitution(data).renderSubstitution());
+ static updateSubstitutions(data) {
+     $("div#new-substitution-form").html(`<div class="center alert alert-primary m-3">Recommended Substitution Saved!<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>`);
+     $("table#recipe_substitutions_table").append(new Substitution(data).renderSubstitution());
 
 
-  }
-/*
-  <tr>
-    <td><h5><i></i><li><i>1 Scoop</i><span class="float-right ml-3"><strong><b>Watermelon</b></strong></span></li></h5></td>
-    <td>
-      <h6>
-        <div class="center"><i class="fas fa-exchange-alt"></i></div>
-        <div class="center"> &nbsp; Replacing &nbsp; </div>
-      </h6>
-  </td>
-    <td><h5 class="replaced-ingredient"><i>1/2 teaspoon</i><span class="float-right ml-2"><strong><b>Melon</b></strong></span></h5></td>
-    <td>
-        <h5 class="replaced-ingredient"><a class="float-right m-auto btn btn-dark border btn-sm border-muted" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/recipes/3/substitutions/10">Delete</a></h5>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="4"><h6><b>Description: </b></h6>
-      <h6>Refreshing!</h6>
-    </td>
-  </tr>
-  <tr><td class="bg-dark p-1" colspan="4"></td></tr>
-
-*/
+ }
 
 
-  Substitution.displayErrors = show_errors => {
-    console.log(show_errors)
 
-    const errorMessages = `<div id="error-messages" class="text-center text-danger m-2"><div class="center alert alert-danger m-3">Please Try Again!</div>${show_errors}</div>`;
+ static ready() {
+     this.getSubstitutionForm()
+ }
 
-    $("div#new-substitution-form").children("#error-messages").remove();
-    $("div#new-substitution-form").prepend(errorMessages);
-    $('form input[value="Recommend Substitution!"]').prop("disabled", false);
-
-  }
-
-
-  Substitution.ready = function() {
-    this.getSubstitutionForm()
-  }
-
+}
 
 $(document).on('turbolinks:load', function() {
   Substitution.ready();
 })
 
+
+
+
+/*
+<tr>
+  <td><h5><i><li><%= substitution.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.ingredient.name %></span></li></strong></b></td></h5>
+  <td>
+    <h6>
+      <div class="center"><i class="fas fa-exchange-alt"></i></div>
+      <div class="center"> &nbsp; Replacing &nbsp; </div>
+    </h6>
+</td>
+  <td><h5 class="replaced-ingredient"><i><%= substitution.recipe_ingredient.quantity %></i><span class="float-right ml-2"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></strong></b></td></h5>
+  <td>
+    <h5 class="replaced-ingredient"><a class="float-right m-auto btn btn-dark border btn-sm border-muted" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/recipes/3/substitutions/3">Delete</a></h5>
+  </td>
+</tr>
+<tr>
+  <td colspan="4"><h6><b>Description: </b></h6>
+    <h6><%= substitution.description %></h6>
+  </td>
+</tr>
+<tr><td class="bg-dark p-1" colspan="4"></td></tr>
+
+*/
+
+
+
+
+
+
+
+
 /*
 
-
-function updatePage(response) {
-  $("div#container").html(" ");
-  let thisTrip = new Trip(response);
-  let newTrip = thisTrip.tripHTML();
-  console.log(response)
-  $("div#container").append(newTrip);
-}
-
-class  {
-  constructor(obj) {
-    this.id = obj.id;
-    this.name = obj.name;
-    this.length = obj.length;
-    this.transportation = obj.transportation;
-    this.hotel_info = obj.hotel_info;
-    this.packing_list = obj.packing_list;
-    this.attractions = obj.attractions;
-    this.visited  = obj.visited;
-    this.year_visited = obj.year_visited;
-  }
-}
 
 .prototype.tripHTML = function () {
   return (`<h1>Trip Name: ${this.name}</h1>
