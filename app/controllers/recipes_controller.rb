@@ -53,7 +53,6 @@ class RecipesController < ApplicationController
         redirect_to user_recipe_path(current_user, @recipe)
       else
         flash.now[:danger] = "Failed to Update Recipe!"
-        4.times { @recipe.recipe_ingredients.build.build_ingredient }
         render :edit
       end
     else

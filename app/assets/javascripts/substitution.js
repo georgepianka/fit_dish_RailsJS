@@ -42,8 +42,7 @@ class Substitution {
   }
 
   Substitution.updateSubstitutions = data => {
-    $("div#new-substitution-form").html(JSON.stringify(data));
-    console.log(data)
+    $("div#new-substitution-form").html(`<div class="text-center text-primary m-2"> Recommended Substitution Saved! </div>`)
   }
 
   Substitution.displayErrors = show_errors => {
