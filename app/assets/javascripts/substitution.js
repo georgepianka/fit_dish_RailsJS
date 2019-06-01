@@ -42,13 +42,18 @@ class Substitution {
   }
 
   Substitution.updateSubstitutions = data => {
-    $("div#new-substitution-form").html(`<div class="text-center text-primary m-2"> Recommended Substitution Saved! </div>`)
+    $("div#new-substitution-form").html(`<div class="center alert alert-primary m-3">Recommended Substitution Saved!<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>`);
+
+
+
   }
 
   Substitution.displayErrors = show_errors => {
     console.log(show_errors)
-    const errorMessages = `<div id="error-messages" class="text-center text-danger m-2"> <h4>Please Try Again!</h4> ${show_errors} </div>`;
-    $("div#new-substitution-form").children("#error-messages").empty();
+
+    const errorMessages = `<div id="error-messages" class="text-center text-danger m-2"><div class="center alert alert-danger m-3">Please Try Again!</div>${show_errors}</div>`;
+
+    $("div#new-substitution-form").children("#error-messages").remove();
     $("div#new-substitution-form").prepend(errorMessages);
     $('form input[value="Recommend Substitution!"]').prop("disabled", false);
 
