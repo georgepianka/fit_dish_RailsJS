@@ -1,6 +1,5 @@
-$(document).on('turbolinks:load', function() {
-  dynamicFields();
-})
+
+
 
 
 function dynamicFields() {
@@ -19,3 +18,21 @@ function dynamicFields() {
   });
 
 }
+
+function toggleRecipeIndex() {
+
+  $("a#toggle-dishes-recipe-index").click( function(e) {
+    e.preventDefault();
+    $(this).html(
+      $(this).html() == '<span><i class="fas fa-list"></i> &nbsp; Show All Recipes</span>' ? '<span><i class="far fa-minus-square"></i> &nbsp; Hide All Recipes</span>' : '<span><i class="fas fa-list"></i> &nbsp; Show All Recipes</span>'
+    )
+    $('div#dishes-recipe-index').toggle();
+  });
+}
+
+
+
+$(document).on('turbolinks:load', function() {
+  dynamicFields();
+  toggleRecipeIndex();
+})

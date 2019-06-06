@@ -51,8 +51,8 @@
 
      <div class="notes_b align-top">
       <ul class="list_b">
-        <span><h4><b>Ingredient Substitutions<b>
-          <%= link_to(('<span><i class="fas fa-comment-medical"></i> &nbsp' + 'Recommend Substitution</span>').html_safe, new_recipe_substitution_path(@recipe, @substitution = Substitution.new ), id: "recommend-substitution", class: 'btn btn-outline-dark btn-md font-weight-bold float-right ml-2') %></span></h4><br>
+        <h4><b>Ingredient Substitutions<b>
+          <%= link_to(('<span><i class="fas fa-comment-medical"></i> &nbsp' + 'Recommend Substitution</span>').html_safe, new_recipe_substitution_path(@recipe, @substitution = Substitution.new ), id: "recommend-substitution", class: 'btn btn-outline-dark btn-md font-weight-bold float-right ml-2') %></h4><br>
 
           <% if @recipe.substitutions.empty? %>
             <h6><li> No One has Recommended Any Substitutions Yet! </li></h6>
