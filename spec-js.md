@@ -11,7 +11,7 @@
 
 &#10003; Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend. *[Recipe Details Show on User Dishes Page; Substitution Show Resource Dynamically Appended After Submission to Recipe Show Page]*
 
-&#10003; Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page. *[Dish has-many RecipeIngredients (and Ingredients) serialized in the JSON response]*
+&#10003; Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page. *[Recipe has-many RecipeIngredients (and Ingredients) serialized in the JSON response parsed on User Dishes Page when User clicks button for More Details]*
 
 &#10003; Must use your Rails application to render a form for creating a resource that is submitted dynamically through JavaScript. *[Substitution Form dynamically rendered, submitted, and displayed on Recipe Show Page; Add Recipe to Dishes Button/HiddenForm dynamically submitted and displayed on User Dishes Page]*
 
