@@ -4,7 +4,7 @@ class Recipe {
      this.name = obj.name
      this.description = obj.description
      this.instructions = obj.instructions
-     this.ingredientsArray = obj.recipe_ingredients.map(i => [i.quantity, i.ingredient.name])
+     this.ingredientsArray = obj.recipe_ingredients.map(i => [i.quantity, i.ingredient.name] )
      }
 
 
@@ -57,7 +57,7 @@ class Recipe {
       $("div#dishes-recipe-index").html(
         recipes.map(r => {
         let recipe = new this(r)
-        return `<ul> ${r.name}:  ${r.ingredientsArray.forEach(i => `<li> ${i[0]} &nbsp; ${i[1]} </li>`)}</ul>`
+        return `<ul> ${recipe.name}:  ${recipe.ingredientsArray.map(i => `<li> ${i[0]} &nbsp; ${i[1]} </li>`).join(" ")}</ul>`
         }).join('')
       );
   }

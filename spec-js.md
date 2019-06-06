@@ -15,7 +15,7 @@
 
 &#10003; Must use your Rails application to render a form for creating a resource that is submitted dynamically through JavaScript. *[Substitution Form dynamically rendered, submitted, and displayed on Recipe Show Page; Add Recipe to Dishes Button/HiddenForm dynamically submitted and displayed on User Dishes Page]*
 
-&#10003; At least one of the JS Model Objects must have a method on the prototype. *[Dish Model & Substitution Model Objects have buildDisplayCard() & newSubstitutionHTML() Prototype Methods, respectively, via ES6 Class Syntax]*
+&#10003; At least one of the JS Model Objects must have a method on the prototype. *[Recipe Model, Dish Model, & Substitution Model Objects have showRecipeDetails(), newDishHTML(), & newSubstitutionHTML() Prototype Methods, respectively, via ES6 Class Syntax]*
 
 `+`
 
