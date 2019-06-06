@@ -6,16 +6,14 @@
 
     <%= link_to "Update Profile", edit_user_path(@user), class: "btn btn-success btn-md border border-muted ml-3 mb-3 align-middle" %>
 
-
-    <div>
+ <div class="d-flex flex-row">
+    <div class="d-flex flex-column">
       <h1 class="display-3 text-success font-weight-bold info">Grocery List</h1>
-    </div>
-    <div>
       <% if @user.dishes.empty? %>
         <h3>You have not added any Dishes Yet!</h3>
       <% else %>
 
-        <div class="notes align-top">
+        <div class="notes d-inline-block align-top">
           <ul class="list">
             <% @user.dishes.each do |dish| %>
               <h4><b> <%= dish.recipe.name %> <b></h4><br>
@@ -27,12 +25,19 @@
            <% end %>
           </ul>
         </div>
-        <div>
-        <%= link_to(('<span><i class="fas fa-plus"></i> &nbsp ' + 'Show Recommended Ingredient Substitutions</span>').html_safe, '#', id: "toggle-ingredient-substitutions", class: 'btn btn-dark btn-md font-weight-bold m-3') %>
       </div>
-        <div id="user-ingredient-substitutions" style="display: none;">
-          <h1 class="text-success font-weight-bold info">Recommended Ingredient Substitutions:</h1>
-          <div class="notes_b align-top">
+  </div>
+
+
+  <div>
+    <%= link_to(('<span><i class="fas fa-plus"></i> &nbsp ' + 'Show Recommended Ingredient Substitutions</span>').html_safe, '#', id: "toggle-ingredient-substitutions", class: 'btn btn-dark btn-md font-weight-bold m-3') %>
+  </div>
+
+  <div class="d-flex flex-row">
+      <div id="user-ingredient-substitutions" style="display: none;">
+        <div class="d-flex flex-column">
+         <h1 class="text-success font-weight-bold info">Recommended Ingredient Substitutions:</h1>
+          <div class="notes_b d-inline-block align-top">
             <ul class="list_b">
 
                <% @user.dishes.each do |dish| %>
@@ -76,5 +81,5 @@
      </div>
 
      <% end %>
-
-    </div>
+  </div>
+</div>

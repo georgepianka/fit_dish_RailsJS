@@ -1,93 +1,45 @@
-<h1 class="display-3 text-success font-weight-bold info">Dishes</h1>
 
-<% if @dishes.empty? %>
-  <h3>You have not added any Dishes Yet!</h3>
-<% end %>
-<div>
-<div class="d-inline-block">
-  <ul class="list-group mt-1 mb-3">
-    <% @dishes.each do |dish| %>
-        <li class="list-group-item">
-        <span class="float-left pt-1"><%= dish.recipe.name %></span>
-        <%= link_to "Delete Dish", user_dish_path(current_user, dish), class: "btn btn-dark border btn-sm border-muted ml-3 align-middle float-right", method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to "Show Recipe", user_recipe_path(current_user, dish.recipe), class: "btn btn-sm btn-primary border border-muted ml-2 float-right" %>
-        <span class="float-right mr-2 ml-4 ">
-          <% if dish.recipe.likes.count > 0 %>
-           <%= dish.recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts align-middle"></i>
-          <% end %>
-         </span>
-        </li>
-    <% end %>
-  </ul>
-</div>
-</div>
-
-<h1 class="display-3 text-success font-weight-bold info">Grocery List</h1>
-
-<div>
-
-  <% if @dishes.empty? %>
-    <h3>You have not added any Dishes Yet!</h3>
-  <% else %>
-
-    <div class="notes align-top">
-      <ul class="list">
+<div class="d-flex flex-row">
+    <div class="d-flex flex-column mr-5">
+      <% if @dishes.empty? %>
+        <h3>You have not added any Dishes Yet!</h3>
+      <% end %>
+      <h1 class="display-3 text-success font-weight-bold info">Dishes</h1>
+      <ul class="list-group mt-1 mb-3">
         <% @dishes.each do |dish| %>
-          <h4><b> <%= dish.recipe.name %> <b></h4><br>
-          <table class="table">
-            <% dish.recipe.recipe_ingredients.each do |ing| %>
-                <tr><td><h5><i><li><%= ing.quantity %></i><span class="float-right ml-3"><strong><b><%= ing.ingredient.name %></span></li></strong></b></td></h5></tr>
-            <% end %>
-        </table>
-       <% end %>
-      </ul>
-    </div>
-
-    <div>
-      <h1 class="text-success font-weight-bold info">Recommended Ingredient Substitutions:</h1>
-      <div class="notes_b align-top">
-        <ul class="list_b">
-
-           <% @dishes.each do |dish| %>
-             <h2 class="my-4 p-2 bg-white d-inline-block border border-dark"><b> <%= dish.recipe.name %></b></u></h2>
-
-              <% if dish.recipe.substitutions.empty? %>
-                <h6><li> No One has Recommended Any Substitutions Yet! </li></h6>
-              <% else %>
-
-               <table class="table table-bordered table-sm">
-                 <tbody>
-                   <% dish.recipe.substitutions.each do |substitution| %>
-                   <tr>
-                     <td><h5><i><li><%= substitution.quantity %></i><span class="float-right ml-3"><strong><b><%= substitution.ingredient.name %></span></li></strong></b></td></h5>
-                     <td>
-                       <h6>
-                         <div class="center"><i class="fas fa-exchange-alt"></i></div>
-                         <div class="center"> &nbsp; Replacing &nbsp; </div>
-                       </h6>
-                   </td>
-                     <td><h5 class="replaced-ingredient"><i><%= substitution.recipe_ingredient.quantity %></i><span class="float-right ml-2"><strong><b><%= substitution.recipe_ingredient.ingredient.name %></span></strong></b></td></h5>
-                     <td>
-                       <% if substitution.user == current_user %>
-                         <h5 class="replaced-ingredient"><%= link_to "Delete", recipe_substitution_path(dish.recipe, substitution), class: "float-right m-auto btn btn-dark border btn-sm border-muted", method: :delete, data: { confirm: 'Are you sure?' } %></h5>
-                       <% end %>
-                     </td>
-                   </tr>
-                   <tr>
-                     <td colspan="4"><h6><b>Description: </b></h6>
-                       <h6><%= substitution.description %></h6>
-                     </td>
-                   </tr>
-                   <tr><td class="bg-dark p-1" colspan="4"></td></tr>
-                 <% end %>
-               </tbody>
-             </table>
-           <% end %>
+            <li class="list-group-item">
+            <span class="float-left pt-1"><%= dish.recipe.name %></span>
+            <%= link_to "Delete Dish", user_dish_path(current_user, dish), class: "btn btn-dark border btn-sm border-muted ml-3 align-middle float-right", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to "Show Recipe", user_recipe_path(current_user, dish.recipe), class: "btn btn-sm btn-primary border border-muted ml-2 float-right" %>
+            <span class="float-right mr-2 ml-4 ">
+              <% if dish.recipe.likes.count > 0 %>
+               <%= dish.recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts align-middle"></i>
+              <% end %>
+             </span>
+            </li>
         <% end %>
-       </ul>
+      </ul>
    </div>
- </div>
 
- <% end %>
+   <div class="d-flex flex-column ml-5">
+    <h1 class="display-3 text-success align-top font-weight-bold info">Grocery List</h1>
+    <% if @dishes.empty? %>
+      <h3>You have not added any Dishes Yet!</h3>
+    <% else %>
+        <div class="notes d-inline-block align-top">
+          <ul class="list">
+              <% @dishes.each do |dish| %>
+                  <h4><b> <%= dish.recipe.name %> <b></h4><br>
+                    <table class="table">
+                      <% dish.recipe.recipe_ingredients.each do |ing| %>
+                        <tr><td><h5><i><li><%= ing.quantity %></i><span class="float-right ml-3"><strong><b><%= ing.ingredient.name %></span></li></strong></b></td></h5></tr>
+                      <% end %>
+                  </table>
+              <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+  </div>
 
 </div>
