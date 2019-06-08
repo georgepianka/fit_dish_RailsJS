@@ -1,31 +1,33 @@
 
 <div class="d-flex flex-row">
     <div class="d-flex flex-column mr-5">
-      <h1 class="display-3 text-success font-weight-bold info">Dishes</h1>
+      <h1 class="display-2 text-success font-weight-bold info px-5">Dishes</h1>
+      <div class="d-flex-inline-block">
       <% if @dishes.empty? %>
         <h3>You have not added any Dishes Yet!</h3>
       <% end %>
-      <ul class="list-group mt-1 mb-3">
+      <ul class="list-group mt-1 mb-2">
         <% @dishes.each do |dish| %>
             <li class="list-group-item">
-            <span class="float-left pt-1"><%= dish.recipe.name %></span>
-            <%= link_to "Delete Dish", user_dish_path(current_user, dish), class: "btn btn-dark border btn-sm border-muted ml-3 align-middle float-right", method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= link_to "Show Recipe", user_recipe_path(current_user, dish.recipe), class: "btn btn-sm btn-primary border border-muted ml-2 float-right" %>
-            <span class="float-right mr-2 ml-4 ">
+            <span class="align-middle"><%= dish.recipe.name %></span>
+            <span class="align-middle ml-1">
               <% if dish.recipe.likes.count > 0 %>
                <%= dish.recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts align-middle"></i>
               <% end %>
              </span>
+            <%= link_to "Show Recipe", user_recipe_path(current_user, dish.recipe), class: "btn btn-sm btn-primary border border-muted align-middle ml-4" %>
+            <%= link_to "Delete Dish", user_dish_path(current_user, dish), class: "btn btn-dark border btn-sm border-muted align-middle", method: :delete, data: { confirm: 'Are you sure?' } %>
             </li>
         <% end %>
       </ul>
+    </div>
   </div>
 
   <div class="d-flex flex-column align-self-top ml-5">
       <%= link_to(('<span><i class="fas fa-list"></i> &nbsp ' + 'Show All Recipes</span>').html_safe, user_recipes_path(current_user), id: "toggle-dishes-recipe-index", class: 'btn btn-dark btn-md font-weight-bold float-right align-top m-2') %></h4><br>
 
 
-      <div id="dishes-recipe-index" style="display: none;">
+      <div id="dishes-recipe-index" class="info" style="display: none; height: 500px; border: 1px solid grey; overflow: auto;">
       </div>
 
   </div>

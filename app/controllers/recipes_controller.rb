@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
      end
     respond_to do |f|
       f.html {render :index}
-      f.json {render json: @recipes, include: ['recipe_ingredients.ingredient'], status: 200}
+      f.json {render json: @recipes, status: 200}
     end
   end
 

@@ -4,7 +4,7 @@ class Recipe {
      this.name = obj.name
      this.description = obj.description
      this.instructions = obj.instructions
-     this.ingredientsArray = obj.recipe_ingredients.map(i => [i.quantity, i.ingredient.name] )
+     this.recipe_ingredients= obj.recipe_ingredients
      }
 
 
@@ -57,10 +57,12 @@ class Recipe {
       $("div#dishes-recipe-index").html(
         recipes.map(r => {
         let recipe = new this(r)
-        return `<ul> ${recipe.name}:  ${recipe.ingredientsArray.map(i => `<li> ${i[0]} &nbsp; ${i[1]} </li>`).join(" ")}</ul>`
+        return `<ul> ${recipe.name} <li>${recipe.description}</li><li>${recipe.instructions}</li> </ul>`
         }).join('')
       );
   }
+
+// ${recipe.ingredientsArray.map(i => `<li> ${i[0]} &nbsp; ${i[1]} </li>`).join(" ")}
 
   static ready() {
     this.dynamicFields();
