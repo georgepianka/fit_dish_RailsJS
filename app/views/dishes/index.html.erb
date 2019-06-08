@@ -24,10 +24,11 @@
   </div>
 
   <div class="d-flex flex-column align-self-top ml-5">
-      <%= link_to(('<span><i class="fas fa-list"></i> &nbsp ' + 'Show All Recipes</span>').html_safe, user_recipes_path(current_user), id: "toggle-dishes-recipe-index", class: 'btn btn-dark btn-md font-weight-bold float-right align-top m-2') %></h4><br>
+      <%= link_to(('<span><i class="fas fa-list"></i> &nbsp ' + 'Show All Recipes</span>').html_safe, user_recipes_path(current_user), id: "toggle-dishes-recipe-index", class: 'btn btn-dark btn-md font-weight-bold float-right align-top mx-2') %></h4><br>
 
 
-      <div id="dishes-recipe-index" class="info" style="display: none; height: 500px; border: 1px solid grey; overflow: auto;">
+      <div id="dishes-recipe-index" class="info my-0" style="display: none; height: 600px; border: 1px solid grey; overflow: auto;">
+        <div id="dishes-recipe-index-wrapper"></div>
       </div>
 
   </div>

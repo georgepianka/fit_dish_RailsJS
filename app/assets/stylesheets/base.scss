@@ -2,35 +2,44 @@ body, html {
    height: 100%;
    font-family: 'Source Sans Pro', sans-serif;
    font-weight: bold;
- }
+}
 
-::-webkit-scrollbar-track {
+div#dishes-recipe-index::-webkit-scrollbar-track {
 	background-color: #0e1111;
 	border-radius: 8px;
 }
 
-::-webkit-scrollbar {
+div#dishes-recipe-index::-webkit-scrollbar {
 	width: 8px;
 	background-color: #0e1111;
   border-radius: 16px;
 }
 
-::-webkit-scrollbar-thumb {
+div#dishes-recipe-index::-webkit-scrollbar-thumb {
 	border-radius: 8px;
 	background-color: #0e1111;
 	background-image: -webkit-gradient(linear,
 									   40% 20%,
 									   75% 84%,
-									   from(#19911D),
-									   to(#008d05),
+									   from(#3b444b),
+									   to(#3b444b),
 									   color-stop(.5,#54DE5D))
 }
 
-::-webkit-scrollbar-track:hover {
-    background-color: #3b444b;
+div#dishes-recipe-index::-webkit-scrollbar-track:hover {
+  background-color: #3b444b;
 }
 
- .bg {
+div.next, div.prev {
+  background-color: #3b444b;
+  cursor: pointer;
+  font-size: 0.75em;
+  border: 1px solid grey;
+  border-radius: 7px;
+}
+
+
+.bg {
    background-image: linear-gradient(black, transparent), url(healthydiet.jpg);
    height: 100%;
    background-position: center;

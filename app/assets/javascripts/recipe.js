@@ -1,5 +1,5 @@
 class Recipe {
- constructor(obj) {
+  constructor(obj) {
      this.id = obj.id
      this.name = obj.name
      this.description = obj.description
@@ -54,13 +54,45 @@ class Recipe {
   }
 
   static displayRecipeIndex(recipes) {
-      $("div#dishes-recipe-index").html(
+
+      $("div#dishes-recipe-index-wrapper").html(
         recipes.map(r => {
-        let recipe = new this(r)
-        return `<ul> ${recipe.name} <li>${recipe.description}</li><li>${recipe.instructions}</li> </ul>`
+          let recipe = new this(r)
+          return `<ul> ${recipe.name} <li>${recipe.description}</li><li>${recipe.instructions}</li> </ul>`
         }).join('')
-      );
+      ).parent()
+          .after('<div class="next d-flex-inline mx-2 text-center"><i class="fa fa-chevron-down"></i></div>')
+          .before('<div class="prev d-flex-inline mx-2 text-center"><i class="fa fa-chevron-up"></i></div>');
+
+      $("div#dishes-recipe-index").hover(function() {
+        $(this).add("div.next, div.prev").stop(true).animate({
+          borderWidth: 2
+        }, 500)
+      }, function() {
+        $(this).add("div.next, div.prev").stop(true).animate({
+          borderWidth: 1
+        }, 500)
+      });
+
+      $("div.next").hover(function() {
+        $("div#dishes-recipe-index").stop(true).animate({
+          "scrollTop": $("div#dishes-recipe-index-wrapper").height()
+        }, 15000);
+      }, function() {
+        $("div#dishes-recipe-index").stop(true)
+      });
+
+      $("div.prev").hover(function() {
+        $("div#dishes-recipe-index").stop(true).animate({
+          "scrollTop": 0
+        }, 15000);
+      }, function() {
+        $("div#dishes-recipe-index").stop(true)
+      });
+
   }
+
+
 
 // ${recipe.ingredientsArray.map(i => `<li> ${i[0]} &nbsp; ${i[1]} </li>`).join(" ")}
 
