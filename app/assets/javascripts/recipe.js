@@ -34,17 +34,19 @@ class Recipe {
       e.preventDefault();
       $(this).html(
         $(this).html() == '<span><i class="fas fa-list"></i> &nbsp; Show All Recipes</span>' ? '<span><i class="far fa-minus-square"></i> &nbsp; Hide All Recipes</span>' : '<span><i class="fas fa-list"></i> &nbsp; Show All Recipes</span>'
-      )
-      $('div#dishes-recipe-index').toggle();
+      );
 
-
-        $.ajax({
+      if($('#dishes-recipe-index-wrapper').is(':empty')){
+         $.ajax({
            url: this.href,
            type: 'GET',
            dataType: 'json',
            success: (data) => Recipe.displayRecipeIndex(data),
            error: (xhr) => Recipe.displayErrors(xhr.responseJSON.show_errors)
-        });
+         })
+       };
+
+       $('div#dishes-recipe-index').add("div.next, div.prev").toggle();
 
     });
   }
@@ -58,7 +60,7 @@ class Recipe {
       $("div#dishes-recipe-index-wrapper").html(
         recipes.map(r => {
           let recipe = new this(r)
-          return `<ul> ${recipe.name} <li>${recipe.description}</li><li>${recipe.instructions}</li> </ul>`
+          return `<ul> ${recipe.name} <li>${recipe.description}</li><li>${recipe.instructions}</li><li>${recipe.recipe_ingredients}</li></ul>`
         }).join('')
       ).parent()
           .after('<div class="next d-flex-inline mx-2 text-center"><i class="fa fa-chevron-down"></i></div>')
