@@ -5,14 +5,23 @@ class Recipe {
      this.description = obj.description
      this.instructions = obj.instructions
      this.like_count = obj.like_count
+     this.user_id = obj.user_id
      this.recipe_ingredients= obj.recipe_ingredients
 
      }
 
   indexHTML() {
-    return`<ul> ${this.name} <li>${this.description}</li><li>${this.instructions}</li></ul>`
+    return `
+      <li id="recipe-index-item" class="list-group-item hvr-grow px-0">
+        <span class="float-left align-middle mt-1"><span class="btn btn-sm"><i class="fas fa-chevron-circle-down"></i></span>${this.name}</span>
+        <a id="add-recipe-to-dishes" class="btn btn-outline-dark btn-sm float-right" href="#"><span><i class="fas fa-plus"></i></span></a>
+        <a class="btn btn-sm btn-primary border border-muted mr-2 float-right" href="/users/${this.user_id}/recipes/${this.id}">Recipe Page</a>
+        <span class="float-right mr-2 mt-1">
+        ${this.like_count > 0 ? this.like_count : ''}&nbsp;<i class="fas fa-grin-hearts"></i>
+        </span>
+      </li>
+    `
   }
-
 
 
   static dynamicFields() {
@@ -62,7 +71,7 @@ class Recipe {
   static displayRecipeIndex(recipes) {
 
       $("div#dishes-recipe-index-wrapper").html(
-        `<ul class="list-group mt-1 mb-3">
+        `<ul class="list-group my-0 mx-0">
         ${recipes.map(r => new this(r).indexHTML()).join('')}
         </ul`
       ).parent()

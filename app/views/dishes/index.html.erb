@@ -1,5 +1,5 @@
 
-<div class="d-flex flex-row flex-wrap flex-sm-nowrap">
+<div class="d-flex flex-row flex-wrap flex-lg-nowrap">
     <div class="d-flex flex-column mr-5 mb-3">
       <h1 class="display-2 text-success font-weight-bold info px-5">Dishes</h1>
       <div class="d-flex-inline-block">
@@ -12,10 +12,10 @@
             <span class="align-middle"><%= dish.recipe.name %></span>
             <span class="align-middle ml-1">
               <% if dish.recipe.likes.count > 0 %>
-               <%= dish.recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts align-middle"></i>
+               <%= dish.recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts"></i>
               <% end %>
              </span>
-            <%= link_to "Show Recipe", user_recipe_path(current_user, dish.recipe), class: "btn btn-sm btn-primary border border-muted align-middle ml-4" %>
+            <%= link_to "Recipe Page", user_recipe_path(current_user, dish.recipe), class: "btn btn-sm btn-primary border border-muted align-middle ml-4 mr-1" %>
             <%= link_to "Delete Dish", user_dish_path(current_user, dish), class: "btn btn-dark border btn-sm border-muted align-middle", method: :delete, data: { confirm: 'Are you sure?' } %>
             </li>
         <% end %>
@@ -27,7 +27,7 @@
       <%= link_to(('<span><i class="fas fa-list"></i> &nbsp ' + 'Show All Recipes</span>').html_safe, user_recipes_path(current_user), id: "toggle-dishes-recipe-index", class: 'btn btn-dark btn-md font-weight-bold align-top mx-2 mt-1') %></h4><br>
 
 
-      <div id="dishes-recipe-index" class="info my-0" style="display: none; max-height: 500px; border: 1px solid grey; overflow: auto;">
+      <div id="dishes-recipe-index" class="info my-0 px-4 py-0" style="display: none; max-height: 500px; border: 1px solid grey; overflow: auto;">
         <div id="dishes-recipe-index-wrapper"></div>
       </div>
 
