@@ -1,6 +1,6 @@
 
-<div class="d-flex flex-row">
-    <div class="d-flex flex-column mr-5">
+<div class="d-flex flex-row flex-wrap flex-sm-nowrap">
+    <div class="d-flex flex-column mr-5 mb-3">
       <h1 class="display-2 text-success font-weight-bold info px-5">Dishes</h1>
       <div class="d-flex-inline-block">
       <% if @dishes.empty? %>
@@ -23,11 +23,11 @@
     </div>
   </div>
 
-  <div class="d-flex flex-column align-self-top ml-5">
-      <%= link_to(('<span><i class="fas fa-list"></i> &nbsp ' + 'Show All Recipes</span>').html_safe, user_recipes_path(current_user), id: "toggle-dishes-recipe-index", class: 'btn btn-dark btn-md font-weight-bold float-right align-top mx-2') %></h4><br>
+  <div class="d-flex flex-column align-self-top my-2">
+      <%= link_to(('<span><i class="fas fa-list"></i> &nbsp ' + 'Show All Recipes</span>').html_safe, user_recipes_path(current_user), id: "toggle-dishes-recipe-index", class: 'btn btn-dark btn-md font-weight-bold align-top mx-2 mt-1') %></h4><br>
 
 
-      <div id="dishes-recipe-index" class="info my-0" style="display: none; height: 600px; border: 1px solid grey; overflow: auto;">
+      <div id="dishes-recipe-index" class="info my-0" style="display: none; max-height: 500px; border: 1px solid grey; overflow: auto;">
         <div id="dishes-recipe-index-wrapper"></div>
       </div>
 

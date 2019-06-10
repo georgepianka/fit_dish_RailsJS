@@ -4,10 +4,14 @@ class Recipe {
      this.name = obj.name
      this.description = obj.description
      this.instructions = obj.instructions
+     this.like_count = obj.like_count
      this.recipe_ingredients= obj.recipe_ingredients
+
      }
 
-
+  indexHTML() {
+    return`<ul> ${this.name} <li>${this.description}</li><li>${this.instructions}</li></ul>`
+  }
 
 
 
@@ -58,10 +62,9 @@ class Recipe {
   static displayRecipeIndex(recipes) {
 
       $("div#dishes-recipe-index-wrapper").html(
-        recipes.map(r => {
-          let recipe = new this(r)
-          return `<ul> ${recipe.name} <li>${recipe.description}</li><li>${recipe.instructions}</li><li>${recipe.recipe_ingredients}</li></ul>`
-        }).join('')
+        `<ul class="list-group mt-1 mb-3">
+        ${recipes.map(r => new this(r).indexHTML()).join('')}
+        </ul`
       ).parent()
           .after('<div class="next d-flex-inline mx-2 text-center"><i class="fa fa-chevron-down"></i></div>')
           .before('<div class="prev d-flex-inline mx-2 text-center"><i class="fa fa-chevron-up"></i></div>');
