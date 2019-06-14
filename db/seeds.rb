@@ -1,6 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-
+Faker::UniqueGenerator.clear
 
 george = User.create(
   username: "George",
@@ -27,29 +27,31 @@ george.recipes.create({"name"=>"Smores", "description"=>"Delicious Fireside Trea
 
 george.substitutions.create({"recipe_id"=>"1", "recipe_ingredient_id"=>"1", "description"=>"Why the heck not?", "quantity"=>"A heaping dollop", "ingredient_attributes"=>{"name"=>"Nutella"}})
 
+george.substitutions.create({"recipe_id"=>"1", "recipe_ingredient_id"=>"2", "description"=>"It's Better!", "quantity"=>"A Big Scoop!", "ingredient_attributes"=>{"name"=>"Nougat"}})
 
-50. times do
+
+18.times do
     george.recipes.create({
-        "name"=>Faker::Food.dish, "description"=>Faker::Food.description, "instructions"=>Faker::Lorem.paragraph(16), "recipe_ingredients_attributes"=>{
-            "0"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "1"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "2"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "3"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "4"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "5"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}
+        "name"=>Faker::Food.unique.dish, "description"=>Faker::Food.description, "instructions"=>Faker::Lorem.unique.paragraph(16), "recipe_ingredients_attributes"=>{
+            "0"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "1"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "2"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "3"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "4"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "5"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}
         }
-    })
+     })
 end
 
-50. times do
+18.times do
     paul.recipes.create({
-        "name"=>Faker::Food.dish, "description"=>Faker::Food.description, "instructions"=>Faker::Lorem.paragraph(16), "recipe_ingredients_attributes"=>{
-            "0"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "1"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "2"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "3"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "4"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "5"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}
-        }
-    })
+      "name"=>Faker::Food.unique.dish, "description"=>Faker::Food.description, "instructions"=>Faker::Lorem.unique.paragraph(16), "recipe_ingredients_attributes"=>{
+          "0"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "1"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "2"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "3"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "4"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "5"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}
+      }
+   })
 end
 
-50. times do
+18.times do
     mark.recipes.create({
-        "name"=>Faker::Food.dish, "description"=>Faker::Food.description, "instructions"=>Faker::Lorem.paragraph(16), "recipe_ingredients_attributes"=>{
-            "0"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "1"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "2"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "3"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "4"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}, "5"=>{"ingredient_attributes"=>{"name"=>Faker::Food.ingredient}, "quantity"=>Faker::Food.measurement}
-        }
-    })
+      "name"=>Faker::Food.unique.dish, "description"=>Faker::Food.description, "instructions"=>Faker::Lorem.unique.paragraph(16), "recipe_ingredients_attributes"=>{
+          "0"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "1"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "2"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "3"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "4"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}, "5"=>{"ingredient_attributes"=>{"name"=>Faker::Food.unique.ingredient}, "quantity"=>Faker::Food.measurement}
+      }
+   })
 end
 
 Recipe.first.likes.create([{user_id: 1}, {user_id: 2}, {user_id: 3}])

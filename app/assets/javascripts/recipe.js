@@ -12,36 +12,29 @@ class Recipe {
 
   indexHTML() {
     return `
-      <li id="recipe-index-item" class="list-group-item hvr-grow px-0">
+      <li class="recipe-index-item list-group-item hvr-grow px-0">
         <span class="float-left align-middle mt-1"><span class="btn btn-sm recipe-index-item-menu-icon"><i class="fas fa-chevron-circle-down"></i></span>${this.name}</span>
-        <div class="dishes-recipe-info d-flex flex-row h6 float-right ml-2" style="display: none;"></div>
-        <a id="add-recipe-to-dishes" class="btn btn-outline-dark btn-sm float-right" href="#"><span><i class="fas fa-plus"></i></span></a>
+        <a id="add-recipe-to-dishes" class="btn btn-outline-dark btn-sm float-right mr-1" href="#"><span><i class="fas fa-plus"></i></span></a>
         <a class="recipe-page-button btn btn-sm btn-primary border border-muted mr-2 float-right" href="/users/${this.current_user_id}/recipes/${this.id}">Recipe Page</a>
         <span class="float-right mx-2 mt-1">
         ${this.like_count > 0 ? this.like_count : ''}&nbsp;<i class="fas fa-grin-hearts"></i>
-        </span>
-
+        </span></br>
       </li>
-
     `
   }
 
   recipeDetailsHTML() {
     return `
-    <div class="d-flex flex-column col-5">
-    <u>Description</u>
-    <u>Instructions</u>
-
-    </div>
-    <div class="d-flex flex-column col-7">
+    </br><div class="dishes-recipe-info h6 mx-2">
+    <p><u>Description</u></p>
+    <u>Instructions</u></br>
     <u>Ingredients</u>
     <table class="table">
         ${this.recipe_ingredients.map(r =>
-            `<tr><td><i><li>${r.quantity}</i><span class="float-right ml-2"><strong><b>${r.ingredient.name}</span></li></strong></b></td></tr>`
+            `<tr><td><i>${r.quantity}</i></td><span class="float-right"><td><b>${r.ingredient.name}</b></td></span></tr>`
         ).join('')}
       </table>
       </div>
-
     `
   }
 
@@ -138,23 +131,23 @@ class Recipe {
   }
 
   static showRecipeInfo() {
-      $("div#dishes-recipe-index").on('click', "li#recipe-index-item", function(e) {
+      $("div#dishes-recipe-index").on('click', "li.recipe-index-item", function(e) {
         $(this).find("span.recipe-index-item-menu-icon").html(
           $(this).find("span.recipe-index-item-menu-icon").html() == '<i class="fas fa-chevron-circle-down"></i>' ? '<i class="fas fa-chevron-circle-up"></i>' : '<i class="fas fa-chevron-circle-down"></i>'
         );
 
-        if($(this).children('div.dishes-recipe-info').is(':empty')){
-
-          let action = $(this).children("a.recipe-page-button").attr("href")
+        if(!$(this).children('div.dishes-recipe-info').length){
+          let action = $(this).find("a.recipe-page-button").attr("href")
           $.ajax({
             url: action,
             type: 'GET',
             dataType: 'json',
-            success: (data) => $(this).children('div.dishes-recipe-info').html(new Recipe(data).recipeDetailsHTML()),
+            success: (data) => $(this).append(new Recipe(data).recipeDetailsHTML()),
             error: (xhr) => Recipe.displayErrors(xhr.responseJSON.show_errors)
-          })
-        };
-        $(this).next().toggle();
+          });
+        }else{
+          $(this).children('div.dishes-recipe-info').toggle();
+        }
       });
   }
 
