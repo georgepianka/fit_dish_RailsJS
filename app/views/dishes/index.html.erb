@@ -10,13 +10,15 @@
         <% @dishes.each do |dish| %>
             <li class="list-group-item">
             <span class="align-middle"><%= dish.recipe.name %></span>
-            <span class="align-middle ml-1">
+            <span class="align-middle ml-2">
               <% if dish.recipe.likes.count > 0 %>
                <%= dish.recipe.likes.count  %>&nbsp;<i class="fas fa-grin-hearts"></i>
               <% end %>
              </span>
-            <%= link_to "Recipe Page", user_recipe_path(current_user, dish.recipe), class: "btn btn-sm btn-primary border border-muted align-middle ml-4 mr-1" %>
+             <span class="float-right">
+            <%= link_to "Recipe Page", user_recipe_path(current_user, dish.recipe), class: "btn btn-sm btn-primary border border-muted align-middle ml-2" %>
             <%= link_to "Delete Dish", user_dish_path(current_user, dish), class: "btn btn-dark border btn-sm border-muted align-middle", method: :delete, data: { confirm: 'Are you sure?' } %>
+          </span>
             </li>
         <% end %>
       </ul>
