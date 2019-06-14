@@ -15,7 +15,7 @@ class Dish {
       <span class="align-middle ml-2">${this.likeCount > 0 ? this.likeCount : ''}&nbsp;<i class="fas fa-grin-hearts"></i></span>
       <span class="float-right">
       <a class="btn btn-sm btn-primary border border-muted align-middle ml-2" href="/users/${this.currentUserID}/recipes/${this.recipeID}">Recipe Page</a>
-      <a class="btn btn-dark border btn-sm border-muted align-middle" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/users/${this.currentUserID}/dishes/${this.id}">Delete Dish</a>
+      <a class="delete-dish-button btn btn-dark border btn-sm border-muted align-middle" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/users/${this.currentUserID}/dishes/${this.id}">Delete Dish</a>
       </span>
     </li>
     `
@@ -47,7 +47,9 @@ class Dish {
 
   static addNewDish(dish) {
     console.log(dish)
-    !$("div#user-dishes-index > h3").length || $("div#user-dishes-index > h3").empty();
+    !$("div#user-dishes-index > h3").length || $("div#user-dishes-index > h3").replaceWith(
+      `<a class="btn btn-dark btn-sm font-weight-bold align-top m-2 mb-3" href="#"><span><i class="fas fa-trash-alt"></i> &nbsp; Delete All Dishes</span></a>`
+    );
     $("div#user-dishes-index > ul").append(new this(dish).newDishHTML());
   }
 
