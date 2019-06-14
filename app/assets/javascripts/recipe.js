@@ -6,7 +6,7 @@ class Recipe {
      this.instructions = obj.instructions
      this.like_count = obj.like_count
      this.user_id = obj.user_id
-     this.recipe_ingredients= obj.recipe_ingredients
+     this.recipe_ingredients = obj.recipe_ingredients
 
      }
 
@@ -118,7 +118,8 @@ class Recipe {
   static getRecipeInfo() {
       $("div#dishes-recipe-index").on('click', "li#recipe-index-item", function(e) {
           e.preventDefault();
-          let action = $(this).find("a#add-recipe-to-dishes").href
+          let action = $(this).children("a#add-recipe-to-dishes").attr("href")
+          console.log(action)
           $.ajax({
             url: action,
             type: 'GET',
