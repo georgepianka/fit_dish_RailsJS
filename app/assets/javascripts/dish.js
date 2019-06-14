@@ -57,7 +57,7 @@ class Dish {
   static deleteAllDishes() {
     $("div#user-dishes-index").on('click', "a#delete-all-dishes-button", function(e) {
       e.preventDefault();
-      if(confirm("Press a button!")){
+      if(confirm("Are You Sure You Want to CLEAR ALL Dishes?")){
 
          $("div#user-dishes-index").find("a.delete-dish-button").each(function() {
 
