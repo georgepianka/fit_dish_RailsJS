@@ -14,13 +14,15 @@ class Recipe {
     return `
       <li id="recipe-index-item" class="list-group-item hvr-grow px-0">
         <span class="float-left align-middle mt-1"><span class="btn btn-sm recipe-index-item-menu-icon"><i class="fas fa-chevron-circle-down"></i></span>${this.name}</span>
-        <a class="btn btn-outline-dark btn-sm float-right" href="#"><span><i class="fas fa-plus"></i></span></a>
-        <a id="add-recipe-to-dishes" class="btn btn-sm btn-primary border border-muted mr-2 float-right" href="/users/${this.current_user_id}/recipes/${this.id}">Recipe Page</a>
-        <span class="float-right mr-2 mt-1">
+        <div class="dishes-recipe-info d-flex flex-row h6 float-right ml-2" style="display: none;"></div>
+        <a id="add-recipe-to-dishes" class="btn btn-outline-dark btn-sm float-right" href="#"><span><i class="fas fa-plus"></i></span></a>
+        <a class="recipe-page-button btn btn-sm btn-primary border border-muted mr-2 float-right" href="/users/${this.current_user_id}/recipes/${this.id}">Recipe Page</a>
+        <span class="float-right mx-2 mt-1">
         ${this.like_count > 0 ? this.like_count : ''}&nbsp;<i class="fas fa-grin-hearts"></i>
         </span>
-        <div class="dishes-recipe-info d-flex flex-row float-right h6" style="display: none;"></div>
+
       </li>
+
     `
   }
 
@@ -28,9 +30,11 @@ class Recipe {
     return `
     <div class="d-flex flex-column col-5">
     <u>Description</u>
+    <u>Instructions</u>
+
     </div>
     <div class="d-flex flex-column col-7">
-    Ingredients
+    <u>Ingredients</u>
     <table class="table">
         ${this.recipe_ingredients.map(r =>
             `<tr><td><i><li>${r.quantity}</i><span class="float-right ml-2"><strong><b>${r.ingredient.name}</span></li></strong></b></td></tr>`
@@ -141,7 +145,7 @@ class Recipe {
 
         if($(this).children('div.dishes-recipe-info').is(':empty')){
 
-          let action = $(this).children("a#add-recipe-to-dishes").attr("href")
+          let action = $(this).children("a.recipe-page-button").attr("href")
           $.ajax({
             url: action,
             type: 'GET',
@@ -150,7 +154,7 @@ class Recipe {
             error: (xhr) => Recipe.displayErrors(xhr.responseJSON.show_errors)
           })
         };
-        $(this).children('div.dishes-recipe-info').toggle();
+        $(this).next().toggle();
       });
   }
 
