@@ -255,7 +255,7 @@ hr.style {
     transition: 0.5s;
 }
 
-a#add-recipe-to-dishes.btn span:after {
+a.add-recipe-to-dishes.btn span:after {
     opacity: 0;
     content: '';
     right: 0;
@@ -266,12 +266,12 @@ a#add-recipe-to-dishes.btn span:after {
   padding-right: 25px;
 }
 
-a#add-recipe-to-dishes.btn:hover span {
+a.add-recipe-to-dishes.btn:hover span {
   padding-right: 90px;
 }
 
 
-a#add-recipe-to-dishes.btn:hover span:after {
+a.add-recipe-to-dishes.btn:hover span:after {
   right: 0;
   content: 'Add To Dishes';
   opacity: 1;

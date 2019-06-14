@@ -17,7 +17,7 @@ class Recipe {
         <a class="add-recipe-to-dishes btn btn-outline-dark btn-sm float-right mr-1" data-recipe-id="${this.id}" data-current-user-id="${this.currentUserID}" href="#"><span><i class="fas fa-plus"></i></span></a>
         <a class="recipe-page-button btn btn-sm btn-primary border border-muted mr-2 float-right" href="/users/${this.currentUserID}/recipes/${this.id}">Recipe Page</a>
         <span class="float-right mx-2 mt-1">
-        ${this.like_count > 0 ? this.likeCount : ''}&nbsp;<i class="fas fa-grin-hearts"></i>
+        ${this.likeCount > 0 ? this.likeCount : ''}&nbsp;<i class="fas fa-grin-hearts"></i>
         </span></br>
       </li>
     `
@@ -32,7 +32,7 @@ class Recipe {
     <p>${this.instructions}</p>
     <u>Ingredients</u>
     <table class="table">
-        ${this.recipe_ingredients.map(r =>
+        ${this.recipeIngredients.map(r =>
             `<tr><td><i>${r.quantity}</i></td><span class="float-right"><td><b>${r.ingredient.name}</b></td></span></tr>`
         ).join('')}
       </table>

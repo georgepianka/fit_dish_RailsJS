@@ -1,39 +1,54 @@
-/*
+
 class Dish {
   constructor(obj) {
-
+    this.recipeID = obj.recipe.id
+    this.name = obj.recipe.name
+    this.likeCount = obj.recipe.like_count
+    this.currentUserID = obj.recipe.current_user_id
   }
 
+  newDishHTML() {}
+
   static addToDishes() {
-      $("div#dishes-recipe-index").on('click', "li.recipe-index-item a.add-recipe-to-dishes", function(e) {
+      $("div#dishes-recipe-index").on('click', "a.add-recipe-to-dishes", function(e) {
         e.preventDefault();
-        let formData = $(this).serialize();
-        console.log(this.attributes.action.value)
-        let action = this.attributes.action.value
+        e.stopPropagation();
+        console.log($(this).data("current-user-id"))
+        let dishData = {dish:{user_id:$(this).data("current-user-id"),recipe_id:$(this).data("recipe-id")}}
+        console.log(dishData)
+
+        let action = $("li.nav-item > a#user-dishes-url").attr("href")
+        console.log(action)
 
         $.ajax({
            url: action,
            type: 'POST',
-           data: formData,
+           data: dishData,
            dataType: 'json',
-           success: (data) => Substitution.updateSubstitutions(data),
-           error: (xhr) => Substitution.displayErrors(xhr.responseJSON.show_errors)
+           success: (data) => Dish.addNewDish(data),
+           error: (xhr) => Dish.displayErrors(xhr.responseJSON.show_errors)
         });
+
       });
   }
 
-
-
-
+  static addNewDish(dish) {
+    console.log(dish)
+    $("div#user-dishes-index")
+  }
 
   static ready() {
-      this.addToDishes;
+    this.addToDishes();
   }
+
 
 }
 
 
 $(document).on('turbolinks:load', function() {
-  Dish.ready();
+    $.ajaxSetup({
+        headers:
+        { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+    });
+    Dish.ready();
 })
-*/

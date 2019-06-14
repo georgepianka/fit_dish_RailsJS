@@ -9,7 +9,7 @@
         <a class="nav-link" href="<%= user_path(current_user) %>">Grocery List</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= user_dishes_path(current_user) %>">Your Dishes</a>
+        <a id="user-dishes-url" class="nav-link" href="<%= user_dishes_path(current_user) %>">Your Dishes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<%= new_user_recipe_path(current_user, @recipe = Recipe.new) %>">New Recipe</a>
