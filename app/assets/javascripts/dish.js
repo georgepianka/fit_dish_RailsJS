@@ -62,5 +62,9 @@ class Dish {
 
 
 $(document).on('turbolinks:load', function() {
+    $.ajaxSetup({
+        headers:
+        { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+    });
     Dish.ready();
 })
