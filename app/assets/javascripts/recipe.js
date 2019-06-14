@@ -13,13 +13,31 @@ class Recipe {
   indexHTML() {
     return `
       <li id="recipe-index-item" class="list-group-item hvr-grow px-0">
-        <span class="float-left align-middle mt-1"><span class="btn btn-sm"><i class="fas fa-chevron-circle-down"></i></span>${this.name}</span>
+        <span class="float-left align-middle mt-1"><span class="btn btn-sm recipe-index-item-menu-icon"><i class="fas fa-chevron-circle-down"></i></span>${this.name}</span>
         <a class="btn btn-outline-dark btn-sm float-right" href="#"><span><i class="fas fa-plus"></i></span></a>
         <a id="add-recipe-to-dishes" class="btn btn-sm btn-primary border border-muted mr-2 float-right" href="/users/${this.current_user_id}/recipes/${this.id}">Recipe Page</a>
         <span class="float-right mr-2 mt-1">
         ${this.like_count > 0 ? this.like_count : ''}&nbsp;<i class="fas fa-grin-hearts"></i>
         </span>
+        <div class="dishes-recipe-info d-flex flex-row float-right h6" style="display: none;"></div>
       </li>
+    `
+  }
+
+  recipeDetailsHTML() {
+    return `
+    <div class="d-flex flex-column col-5">
+    <u>Description</u>
+    </div>
+    <div class="d-flex flex-column col-7">
+    Ingredients
+    <table class="table">
+        ${this.recipe_ingredients.map(r =>
+            `<tr><td><i><li>${r.quantity}</i><span class="float-right ml-2"><strong><b>${r.ingredient.name}</span></li></strong></b></td></tr>`
+        ).join('')}
+      </table>
+      </div>
+
     `
   }
 
@@ -79,9 +97,9 @@ class Recipe {
           .after('<div class="next d-flex-inline mx-2 text-center"><i class="fa fa-chevron-down"></i></div>')
           .before('<div class="prev d-flex-inline mx-2 text-center"><i class="fa fa-chevron-up"></i></div>');
 
-      Recipe.recipeIndexHoverBorder();
-      Recipe.recipeIndexHoverScroll();
-      Recipe.getRecipeInfo();
+      this.recipeIndexHoverBorder();
+      this.recipeIndexHoverScroll();
+      this.showRecipeInfo();
   }
 
   static recipeIndexHoverBorder() {
@@ -115,25 +133,25 @@ class Recipe {
       });
   }
 
-  static getRecipeInfo() {
+  static showRecipeInfo() {
       $("div#dishes-recipe-index").on('click', "li#recipe-index-item", function(e) {
-          e.preventDefault();
+        $(this).find("span.recipe-index-item-menu-icon").html(
+          $(this).find("span.recipe-index-item-menu-icon").html() == '<i class="fas fa-chevron-circle-down"></i>' ? '<i class="fas fa-chevron-circle-up"></i>' : '<i class="fas fa-chevron-circle-down"></i>'
+        );
+
+        if($(this).children('div.dishes-recipe-info').is(':empty')){
+
           let action = $(this).children("a#add-recipe-to-dishes").attr("href")
-          console.log(action)
           $.ajax({
             url: action,
             type: 'GET',
             dataType: 'json',
-            success: (data) => Recipe.displayRecipeInfo(data),
+            success: (data) => $(this).children('div.dishes-recipe-info').html(new Recipe(data).recipeDetailsHTML()),
             error: (xhr) => Recipe.displayErrors(xhr.responseJSON.show_errors)
-          });
+          })
+        };
+        $(this).children('div.dishes-recipe-info').toggle();
       });
-  }
-
-  static displayRecipeInfo(recipe) {
-    let recipe_info = new this(recipe)
-    console.log(recipe_info.name)
-
   }
 
   static ready() {
