@@ -4,9 +4,9 @@ class Recipe {
      this.name = obj.name
      this.description = obj.description
      this.instructions = obj.instructions
-     this.like_count = obj.like_count
-     this.current_user_id = obj.current_user_id
-     this.recipe_ingredients = obj.recipe_ingredients
+     this.likeCount = obj.like_count
+     this.currentUserID = obj.current_user_id
+     this.recipeIngredients = obj.recipe_ingredients
 
      }
 
@@ -14,10 +14,10 @@ class Recipe {
     return `
       <li class="recipe-index-item list-group-item hvr-grow px-0">
         <span class="float-left align-middle mt-1"><span class="btn btn-sm recipe-index-item-menu-icon"><i class="fas fa-chevron-circle-down"></i></span>${this.name}</span>
-        <a id="add-recipe-to-dishes" class="btn btn-outline-dark btn-sm float-right mr-1" href="#"><span><i class="fas fa-plus"></i></span></a>
-        <a class="recipe-page-button btn btn-sm btn-primary border border-muted mr-2 float-right" href="/users/${this.current_user_id}/recipes/${this.id}">Recipe Page</a>
+        <a class="add-recipe-to-dishes btn btn-outline-dark btn-sm float-right mr-1" data-recipe-id="${this.id}" data-current-user-id="${this.currentUserID}" href="#"><span><i class="fas fa-plus"></i></span></a>
+        <a class="recipe-page-button btn btn-sm btn-primary border border-muted mr-2 float-right" href="/users/${this.currentUserID}/recipes/${this.id}">Recipe Page</a>
         <span class="float-right mx-2 mt-1">
-        ${this.like_count > 0 ? this.like_count : ''}&nbsp;<i class="fas fa-grin-hearts"></i>
+        ${this.like_count > 0 ? this.likeCount : ''}&nbsp;<i class="fas fa-grin-hearts"></i>
         </span></br>
       </li>
     `
@@ -25,9 +25,11 @@ class Recipe {
 
   recipeDetailsHTML() {
     return `
-    </br><div class="dishes-recipe-info h6 mx-2">
-    <p><u>Description</u></p>
-    <u>Instructions</u></br>
+    </br><div class="dishes-recipe-info h6 mx-3">
+    <u>Description</u>
+    <p>${this.description}</p>
+    <u>Instructions</u>
+    <p>${this.instructions}</p>
     <u>Ingredients</u>
     <table class="table">
         ${this.recipe_ingredients.map(r =>
