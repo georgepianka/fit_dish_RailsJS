@@ -78,6 +78,11 @@ class Recipe {
           .after('<div class="next d-flex-inline mx-2 text-center"><i class="fa fa-chevron-down"></i></div>')
           .before('<div class="prev d-flex-inline mx-2 text-center"><i class="fa fa-chevron-up"></i></div>');
 
+      Recipe.recipeIndexHoverBorder();
+      Recipe.recipeIndexHoverScroll();
+  }
+
+  static recipeIndexHoverBorder() {
       $("div#dishes-recipe-index").hover(function() {
         $(this).add("div.next, div.prev").stop(true).animate({
           borderWidth: 2
@@ -87,6 +92,9 @@ class Recipe {
           borderWidth: 1
         }, 500)
       });
+  }
+
+  static recipeIndexHoverScroll() {
 
       $("div.next").hover(function() {
         $("div#dishes-recipe-index").stop(true).animate({
@@ -103,16 +111,11 @@ class Recipe {
       }, function() {
         $("div#dishes-recipe-index").stop(true)
       });
-
   }
 
-
-
-// ${recipe.ingredientsArray.map(i => `<li> ${i[0]} &nbsp; ${i[1]} </li>`).join(" ")}
-
   static ready() {
-    this.dynamicFields();
-    this.toggleRecipeIndex();
+      this.dynamicFields();
+      this.toggleRecipeIndex();
   }
 
 }
