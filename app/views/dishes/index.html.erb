@@ -6,7 +6,7 @@
       <% if @dishes.empty? %>
         <h3>You have not added any Dishes Yet!</h3>
       <% else %>
-        <%= link_to(('<span><i class="fas fa-trash-alt"></i> &nbsp ' + 'Delete All Dishes</span>').html_safe, "#", class: 'btn btn-dark btn-sm font-weight-bold align-top m-2 mb-3') %></h4><br>
+        <%= link_to(('<span><i class="fas fa-trash-alt"></i> &nbsp ' + 'Delete All Dishes</span>').html_safe, "#", id: 'delete-all-dishes-button', class: 'btn btn-dark btn-sm font-weight-bold align-top m-2 mb-3') %></h4><br>
       <% end %>
       <ul class="list-group mt-1 mb-2">
         <% @dishes.each do |dish| %>
@@ -18,8 +18,8 @@
               <% end %>
              </span>
              <span class="float-right">
-            <%= link_to "Recipe Page", user_recipe_path(current_user, dish.recipe), class: "delete-dish-button btn btn-sm btn-primary border border-muted align-middle ml-2" %>
-            <%= link_to "Delete Dish", user_dish_path(current_user, dish), class: "btn btn-dark border btn-sm border-muted align-middle", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to "Recipe Page", user_recipe_path(current_user, dish.recipe), class: "btn btn-sm btn-primary border border-muted align-middle ml-2" %>
+            <%= link_to "Delete Dish", user_dish_path(current_user, dish), class: "delete-dish-button btn btn-dark border btn-sm border-muted align-middle", method: :delete, data: { confirm: 'Are you sure?' } %>
           </span>
             </li>
         <% end %>

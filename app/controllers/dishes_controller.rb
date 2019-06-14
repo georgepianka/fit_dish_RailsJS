@@ -38,10 +38,17 @@ class DishesController < ApplicationController
       if @dish.user_id == current_user.id
         @dish.destroy
         flash[:primary] = "Dish Removed!"
-        redirect_to user_dishes_path(current_user)
+        respond_to do |f|
+  				f.html {redirect_to user_dishes_path(current_user)}
+  				f.json {render json: @dish, status: 200}
+        end
       else
         flash[:danger] = "You can only Delete Your Own Dish!"
-        redirect_to user_path(current_user)
+        respond_to do |f|
+  				f.html {redirect_to user_path(current_user)}
+  				f.json {render json: {}, status: 204}
+        end
+
       end
     end
 

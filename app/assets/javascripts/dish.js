@@ -51,12 +51,36 @@ class Dish {
       `<a class="btn btn-dark btn-sm font-weight-bold align-top m-2 mb-3" href="#"><span><i class="fas fa-trash-alt"></i> &nbsp; Delete All Dishes</span></a>`
     );
     $("div#user-dishes-index > ul").append(new this(dish).newDishHTML());
+
   }
 
+  static deleteAllDishes() {
+    $("div#user-dishes-index").on('click', "a#delete-all-dishes-button", function(e) {
+      e.preventDefault();
+      if(confirm("Press a button!")){
 
+         $("div#user-dishes-index").find("a.delete-dish-button").each(function() {
+
+            let action = $(this).attr("href")
+            $.ajax({
+               url: action,
+               type: 'DELETE',
+               dataType: 'json',
+               success: (data) => $(this).closest("li").remove(),
+               error: (xhr) => Dish.displayErrors(xhr.responseJSON.show_errors)
+            });
+
+          });
+        }
+        $(this).closest("div.container").before(`<div class="center alert alert-primary">All Dishes Removed!
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        </div>`);
+    });
+  }
 
   static ready() {
     this.addToDishes();
+    this.deleteAllDishes();
   }
 
 
