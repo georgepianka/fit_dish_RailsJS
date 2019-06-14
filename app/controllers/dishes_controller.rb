@@ -19,11 +19,17 @@ class DishesController < ApplicationController
       @dish = current_user.dishes.build(dish_params)
       if @dish.save
         flash[:primary] = "Added Dish to Your Dishes!"
-        redirect_to user_dishes_path(current_user)
+        respond_to do |f|
+  				f.html {redirect_to user_dishes_path(current_user)}
+  				f.json {render json: @dish, include: ['recipe'], status: 201}
+        end
       else
         find_recipe_by_id
         flash[:danger] = "Failed to Add Dish to Your Dishes!"
-        redirect_to user_recipe_path(current_user, @recipe)
+        respond_to do |f|
+  				f.html {redirect_to user_recipe_path(current_user, @recipe)}
+  				f.json {render json: {show_errors: render_to_string(partial: 'layouts/show_errors.html.erb', locals: {model: @dish})}, status: 422}
+        end
       end
     end
 
