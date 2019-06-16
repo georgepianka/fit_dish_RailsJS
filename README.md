@@ -37,7 +37,7 @@ This is a Rails App made by George Pianka for Flatiron School Final Project Sect
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at
-#### https://github.com/NotoriousCottonball/fit_dish.
+#### https://github.com/NotoriousCottonball/fit_dish_RailsJS.
 This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 ## License
