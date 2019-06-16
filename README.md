@@ -7,7 +7,7 @@ This is a Rails App made by George Pianka for Flatiron School Final Project Sect
 ## Setting Up
 
 #### 1. Clone
-`$ git clone https://github.com/NotoriousCottonball/fit_dish.git`
+`$ git clone https://github.com/NotoriousCottonball/fit_dish_RailsJS.git`
 #### 2. Bundler
 `$ bundle install`
 #### 3. Database
